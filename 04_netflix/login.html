@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>넷플릭스 로그인</title>
+  <link rel="stylesheet" href="login.css">
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css" />
+  <style>
+    body {
+      position: relative;
+      background: black;
+      min-height: 100vh;
+    }
+    .background-image {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('netflix-background.jpg');
+      background-size: cover;
+      background-position: center;
+      z-index: -2;
+    }
+    .background-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: -1;
+    }
+    .login-wrapper {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 60px 68px 40px;
+      border-radius: 4px;
+      max-width: 450px;
+      width: 100%;
+      margin: auto;
+    }
+    .login-form input[type="email"],
+    .login-form input[type="password"] {
+      background-color: rgba(0, 0, 0, 0.15);
+      border: 1px solid #333;
+      color: white;
+      padding: 16px;
+      margin-bottom: 16px;
+      font-size: 1rem;
+      border-radius: 4px;
+    }
+    .btn-login {
+      background-color: #e50914;
+      color: white;
+      font-weight: bold;
+      padding: 10px;
+      font-size: 14px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-bottom: 16px;
+    }
+    .btn-secondary {
+      background-color: rgba(109, 109, 110, 0.6);
+      color: white;
+      font-weight: 500;
+      padding: 10px;
+      font-size: 14px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-bottom: 10px;
+    }
+    .forgot {
+      display: block;
+      text-align: center;
+      margin-top: 10px;
+      color: white;
+      text-decoration: underline;
+      font-size: 14px;
+    }
+    .options {
+      margin-top: 20px;
+    }
+    .options label {
+      color: white;
+      font-size: 16px;
+    }
+    .bottom-text {
+      margin-top: 20px;
+    }
+    .bottom-text p:first-child {
+      margin-top: 10px;
+    }
+    .recaptcha {
+      margin-top: 30px;
+      font-size: 12px;
+      color: #999;
+    }
+    .recaptcha a {
+      text-decoration: underline;
+      color: #6ca0dc;
+    }
+  </style>
+</head>
+  <body>
+    <a href="signup.html" style="position: absolute; top: 12px; left: 160px; z-index: 10;">
+      <img src="logo.png" alt="Netflix Logo" style="height: 64px;">
+    </a>
+  <div class="background-image"></div>
+  <div class="background-overlay"></div>
+
+  <div class="login-wrapper">
+    <h1 class="login-title">로그인</h1>
+    <form id="login-form" class="login-form">
+      <input type="email" id="email" placeholder="이메일 주소 또는 휴대폰 번호" required />
+      <input type="password" id="password" placeholder="비밀번호" required />
+      <button type="submit" class="btn-login">로그인</button>
+
+      <div class="divider">또는</div>
+
+      <button type="button" class="btn-secondary">로그인 코드 사용하기</button>
+
+      <a href="#" class="forgot underline-link">비밀번호를 잊으셨나요?</a>
+
+      <div class="options">
+        <label><input type="checkbox" id="remember"> 로그인 정보 저장</label>
+      </div>
+
+      <p class="error-msg" id="error-msg"></p>
+    </form>
+
+    <div class="bottom-text">
+      <p>넷플릭스 회원이 아닌가요? <a href="signup.html">지금 가입하세요.</a></p>
+      <p class="recaptcha">
+        이 페이지는 Google reCAPTCHA의 보호를 받아 사용자가 로봇이 아님을 확인합니다.<br>
+        <a href="#" onclick="showRecaptchaInfo(event)">자세히 알아보기.</a>
+      </p>
+      <p id="recaptcha-info" style="display: none; font-size: 12px; color: #8c8c8c; margin-top: 12px;">
+        Google reCAPTCHA가 수집하는 정보에는 Google 
+        <a href="https://policies.google.com/privacy" target="_blank" style="text-decoration: underline;">개인정보처리방침</a>과 
+        <a href="https://policies.google.com/terms" target="_blank" style="text-decoration: underline;">서비스 약관</a>이 적용되며, 
+        해당 정보는 reCAPTCHA 서비스 제공, 관리 및 개선과 일반적인 보안 유지에 사용됩니다
+        (Google의 개인 맞춤 광고에 사용 안 함).
+      </p>
+      
+    </div>
+  </div>
+
+  <script src="login.js" defer></script>
+</body>
+</html>
