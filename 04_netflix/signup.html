@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>넷플릭스 가입</title>
+  <link rel="stylesheet" href="signup.css">
+  <link rel="stylesheet" as="style" crossorigin
+    href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css" />
+<style>
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.4s ease;
+  padding: 0 20px;
+}
+.faq-item.active .faq-answer {
+  max-height: 500px;
+  padding: 16px 20px;
+}
+
+@media (max-width: 768px) {
+  .nav {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .nav-right {
+    flex-direction: column;
+    width: 100%;
+  }
+  .email-form-wrapper {
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+  }
+  .email-form-wrapper input,
+  .email-form-wrapper button {
+    width: 100%;
+  }
+  .feature-boxes {
+    flex-direction: column;
+  }
+  .feature-box {
+    width: 100%;
+  }
+  .faq-question {
+    font-size: 1rem;
+    padding: 16px;
+  }
+  .faq-icon {
+    font-size: 1.2rem;
+  }
+}
+</style>
+</head>
+<body>
+  <section class="hero">
+    <div class="nav">
+      <img src="logo.png" alt="Netflix Logo" style="height: 56px;">
+      <div class="nav-right">
+        <select>
+          <option>한국어</option>
+          <option>English</option>
+        </select>
+        <button onclick="location.href='login.html'">로그인</button>
+      </div>
+    </div>
+    <div class="content">
+      <h1 style="font-size: 3rem; margin-top: 40px;">영화, 시리즈 등을<br>무제한으로</h1>
+      <h2 style="font-size: 1.3rem;">5,500원으로 시작하세요. 멤버십은 언제든지 해지 가능합니다.</h2>
+      <!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>넷플릭스 가입</title>
+  <link rel="stylesheet" href="signup.css">
+  <link rel="stylesheet" as="style" crossorigin
+    href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css" />
+</head>
+<body>
+  <!-- your HTML content remains unchanged -->
+  <script src="signup.js"></script>
+</body>
+</html>
+      <div class="email-form-wrapper" style="margin: 25px 0; text-align: center; flex-direction: column; align-items: center;">
+  <h3 style="font-size: 0.95rem; font-weight: 400; margin-bottom: 8px; color: #ffffff;">시청할 준비가 되셨나요? 멤버십을 등록하거나 재시작하려면 이메일 주소를 입력하세요.</h3>
+  <div style="display: flex; gap: 8px; flex-wrap: wrap; justify-content: center;">
+    <input type="email" placeholder="이메일 주소" style="padding: 14px 24px; border-radius: 30px; border: none; background: rgba(51, 51, 51, 0.8); color: white; width: 400px;">
+    <button style="padding: 14px 32px; border-radius: 30px; background: #e50914; color: white; font-weight: bold; border: none; font-size: 1rem;">시작하기 ➤</button>
+  </div>
+</div>
+      <div class="promo-box">
+        <div class="text">
+          <strong>5,500원이면 만날 수 있는 넷플릭스.</strong><br>
+          몇 개의 중간 광고와 함께 요금도 절약하고 넷플릭스도 즐겨보세요.
+        </div>
+        <button>자세히 알아보기</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div style="padding: 64px 32px 32px; max-width: 1200px; margin: 0 auto;">
+      <h2 style="font-size: 1.6rem; font-weight: bold; margin-bottom: 24px;">지금 뜨는 콘텐츠</h2>
+      <div class="thumbnail-scroll-container">
+        <button class="scroll-arrow left" onclick="scrollThumbnails('left')">&#8249;</button>
+        <div class="thumbnail-list">
+          <div class="thumbnail-card"><span class="thumbnail-number">1</span><img src="content1.jpg" alt="콘텐츠1"></div>
+          <div class="thumbnail-card"><span class="thumbnail-number">2</span><img src="content2.jpg" alt="콘텐츠2"></div>
+          <div class="thumbnail-card"><span class="thumbnail-number">3</span><img src="content3.jpg" alt="콘텐츠3"></div>
+          <div class="thumbnail-card"><span class="thumbnail-number">4</span><img src="content4.jpg" alt="콘텐츠4"></div>
+          <div class="thumbnail-card"><span class="thumbnail-number">5</span><img src="content5.jpg" alt="콘텐츠5"></div>
+          <div class="thumbnail-card"><span class="thumbnail-number">6</span><img src="content6.jpg" alt="콘텐츠6"></div>
+          <div class="thumbnail-card"><span class="thumbnail-number">7</span><img src="content7.jpg" alt="콘텐츠7"></div>
+          <div class="thumbnail-card"><span class="thumbnail-number">8</span><img src="content8.jpg" alt="콘텐츠8"></div>
+          <div class="thumbnail-card"><span class="thumbnail-number">9</span><img src="content9.jpg" alt="콘텐츠9"></div>
+          <div class="thumbnail-card"><span class="thumbnail-number">10</span><img src="content10.jpg" alt="콘텐츠10"></div>
+        </div>
+        <button class="scroll-arrow right" onclick="scrollThumbnails('right')">&#8250;</button>
+      </div>
+
+      <h2 style="font-size: 1.6rem; font-weight: bold; margin: 48px 0 16px;">가입해야 하는 또 다른 이유</h2>
+      <div class="feature-boxes">
+        <div class="feature-box" style="background-color: #222;">
+          <div>언제든지 해지 또는 전환 가능한<br>멤버십</div>
+          <img src="1.png" alt="icon">
+        </div>
+        <div class="feature-box" style="background-color: #222;">
+          <div>어린이만을 위한 안전한 공간</div>
+          <img src="2.png" alt="icon">
+        </div>
+        <div class="feature-box" style="background-color: #222;">
+          <div>즐겨 사용하는 디바이스에서 시청</div>
+          <img src="3.png" alt="icon">
+        </div>
+        <div class="feature-box" style="background-color: #222;">
+          <div>취향에 딱 맞는 이야기</div>
+          <img src="4.png" alt="icon">
+        </div>
+      </div>
+
+      <h2 style="font-size: 1.6rem; font-weight: bold; margin: 48px 0 16px;">자주 묻는 질문</h2>
+      <div class="faq-container">
+        <div class="faq-item">
+          <button class="faq-question">넷플릭스에서 어떤 콘텐츠를 시청할 수 있나요?<span class="faq-icon">+</span></button>
+          <div class="faq-answer">
+            넷플릭스는 장편 영화, 다큐멘터리, 시리즈, 애니메이션, 각종 상을 수상한 넷플릭스 오리지널 등 수많은 콘텐츠를 확보하고 있습니다. 마음에 드는 콘텐츠를 원하는 시간에 원하는 만큼 시청하실 수 있습니다.<br>
+            <a href="#" style="color: white; text-decoration: underline;">넷플릭스 콘텐츠를 한번 살펴보세요.</a>
+          </div>
+        </div>
+        <div class="faq-item"><button class="faq-question">넷플릭스란 무엇인가요?<span class="faq-icon">+</span></button><div class="faq-answer">넷플릭스는 온라인 스트리밍 플랫폼입니다.</div></div>
+        <div class="faq-item"><button class="faq-question">넷플릭스 요금은 얼마인가요?<span class="faq-icon">+</span></button><div class="faq-answer">요금제에 따라 다르며, 광고 포함/제외 플랜이 있습니다.</div></div>
+        <div class="faq-item"><button class="faq-question">어디에서 시청할 수 있나요?<span class="faq-icon">+</span></button><div class="faq-answer">스마트폰, 태블릿, 스마트 TV 등 다양한 디바이스에서 시청 가능합니다.</div></div>
+        <div class="faq-item"><button class="faq-question">멤버십을 해지하려면 어떻게 하나요?<span class="faq-icon">+</span></button><div class="faq-answer">계정 설정 메뉴에서 언제든지 해지할 수 있습니다.</div></div>
+        <div class="faq-item"><button class="faq-question">아이들이 넷플릭스를 봐도 좋을까요?<span class="faq-icon">+</span></button><div class="faq-answer">어린이 전용 프로필로 안전하게 시청할 수 있습니다.</div></div>
+
+        <div class="email-form-wrapper" style="margin: 48px 0; text-align: center; flex-direction: column; align-items: center;">
+          <h3 style="font-size: 1.05rem; font-weight: 400; margin-bottom: 12px; margin-top: -8px; color: #ccc;">시청할 준비가 되셨나요? 멤버십을 등록하거나 재시작하려면 이메일 주소를 입력하세요.</h3>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap; justify-content: center;">
+            <input type="email" placeholder="이메일 주소" style="padding: 14px 24px; border-radius: 30px; border: none; background: #333; color: white; width: 400px;">
+            <button style="padding: 14px 32px; border-radius: 30px; background: #e50914; color: white; font-weight: bold; border: none; font-size: 1rem;">시작하기 ➤</button>
+          </div>
+        </div>
+      </div>
+
+      <footer style="padding: 100px 0 60px; color: #999; font-size: 16px; max-width: 1200px; margin: 0 auto; padding-left: 32px; padding-right: 32px;">
+        <p style="margin-bottom: 20px; color: #999999;">질문이 있으신가요? 문의 전화: <a href="tel:003083210161" style="color: #999999; text-decoration: underline;">00-308-321-0161 (수신자 부담)</a></p>
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 20px;">
+          <a href="#" style="color: #999999; text-decoration: underline;">자주 묻는 질문</a>
+          <a href="#" style="color: #999999; text-decoration: underline;">투자 정보(IR)</a>
+          <a href="#" style="color: #999999; text-decoration: underline;">개인정보 처리방침</a>
+          <a href="#" style="color: #999999; text-decoration: underline;">속도 테스트</a>
+          <a href="#" style="color: #999999; text-decoration: underline;">고객 센터</a>
+          <a href="#" style="color: #999999; text-decoration: underline;">입사 정보</a>
+          <a href="#" style="color: #999999; text-decoration: underline;">쿠키 설정</a>
+          <a href="#" style="color: #999999; text-decoration: underline;">법적 고지</a>
+          <a href="#" style="color: #999999; text-decoration: underline;">계정</a>
+          <a href="#" style="color: #999999; text-decoration: underline;">넷플릭스 지원 디바이스</a>
+          <a href="#" style="color: #999999; text-decoration: underline;">회사 정보</a>
+          <a href="#" style="color: #999999; text-decoration: underline;">오직 넷플릭스에서</a>
+          <a href="#" style="color: #999999; text-decoration: underline;">미디어 센터</a>
+          <a href="#" style="color: #999999; text-decoration: underline;">이용 약관</a>
+          <a href="#" style="color: #999999; text-decoration: underline;">문의하기</a>
+        </div>
+        <div style="margin-bottom: 20px;">
+          <button style="background: transparent; border: 1px solid #999999; color: #999999; padding: 6px 12px; border-radius: 4px; cursor: pointer;">🌐 한국어 ▼</button>
+        </div>
+        <div style="font-size: 13px; color: #999999;">
+          <p style="margin-bottom: 8px; font-size: 16px; font-weight: bold; color: #999999;">넷플릭스 대한민국</p>
+          <p style="margin-bottom: 4px;">넷플릭스서비시스코리아 유한회사 통신판매업신고번호: 제2018-서울종로-0426호 전화번호: 00-308-321-0161 (수신자 부담)</p>
+          <p style="margin-bottom: 4px;">대표: 레지널드 숀 톰프슨</p>
+          <p style="margin-bottom: 4px;">이메일 주소: korea@netflix.com</p>
+          <p style="margin-bottom: 4px;">주소: 대한민국 서울특별시 종로구 우정국로 26, 센트로폴리스 A동 20층 우편번호 03161</p>
+          <p style="margin-bottom: 4px;">사업자등록번호: 165-87-00119</p>
+          <p style="margin-bottom: 4px;">클라우드 호스팅: Amazon Web Services Inc.</p>
+          <p style="margin-bottom: 4px;">공정거래위원회 웹사이트</p>
+        </div>
+      </footer>
+    </div>
+  </section>
+
+  <script src="signup.js"></script>
+</body>
+</html>
