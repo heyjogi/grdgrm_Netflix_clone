@@ -1,0 +1,79 @@
+
+.HeaderNav {
+    display: flex;
+    align-items:first baseline;
+    justify-content: space-between;
+    padding: 20px 44px;
+    background-color: #141414;
+    height: 50px;
+    font-size: 14px;
+    position: relative;
+}
+
+.primary-navigation {
+    display: flex;
+    gap: 50px;
+}
+
+.netflix-logo-btn {
+    display: block;
+    justify-content: start;
+    width: 92px !important; 
+    height: 26px !important;
+}
+
+.netflix-logo-btn img {
+    display: block;
+    width: auto; 
+    height: 100%;
+}
+
+.navigation {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.navigation li {
+    display: inline-block;
+    margin-right: 16px;
+}
+
+.secondary-navigation {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+}
+
+.search-tab, .notifications-tab {
+    background-color: #141414;
+    border: none;
+}
+
+.search-tab, .notifications-tab  svg {
+    color: white !important;
+}
+
+.profile-icon {
+    border-radius: 10%;
+}
+
+.HeaderNav .navigation-desktop {
+    display: none;
+}
+
+.HeaderNav .navigation-mobile {
+    display: flex;
+    gap: 20px; 
+}
+
+@media screen and (min-width: 1024px) {
+    .HeaderNav .navigation-desktop {
+        display: flex;
+        gap: 20px;
+    }
+
+    .HeaderNav .navigation-mobile {
+        display: none;
+    }
+}
