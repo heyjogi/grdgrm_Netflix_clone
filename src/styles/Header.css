@@ -1,4 +1,3 @@
-
 .HeaderNav {
     display: flex;
     align-items: first baseline;
@@ -19,13 +18,13 @@
 .netflix-logo-btn {
     display: block;
     justify-content: start;
-    width: 92px !important; 
+    width: 92px !important;
     height: 26px !important;
 }
 
 .netflix-logo-btn img {
     display: block;
-    width: auto; 
+    width: auto;
     height: 100%;
 }
 
@@ -50,13 +49,46 @@
     gap: 16px;
 }
 
-.search-tab, .notifications-tab {
+.search-tab,
+.notifications-tab {
     background-color: #141414;
     border: none;
 }
 
-.search-tab, .notifications-tab  svg {
+.search-tab,
+.notifications-tab svg {
     color: white !important;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.search-input {
+    width: 0;
+    opacity: 0;
+    padding: 0;
+    margin-left: 8px;
+    transition: width 0.4s ease, opacity 0.4s ease, padding 0.4s ease;
+    background-color: transparent;
+    border: 1px solid white;
+    color: white;
+    font-size: 14px;
+    border-radius: 2px;
+}
+
+.search-input.active {
+    width: 200px;
+    opacity: 1;
+    padding: 4px 8px;
+}
+
+.search-tab {
+    background: none;
+    border: none;
+    color: white;
 }
 
 .profile-icon {
@@ -69,7 +101,7 @@
 
 .HeaderNav .navigation-mobile {
     display: flex;
-    gap: 20px; 
+    gap: 20px;
 }
 
 @media screen and (min-width: 1024px) {
