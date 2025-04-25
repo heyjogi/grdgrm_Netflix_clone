@@ -1,7 +1,7 @@
 
 .HeaderNav {
     display: flex;
-    align-items:first baseline;
+    align-items: first baseline;
     justify-content: space-between;
     padding: 20px 44px;
     background-color: #141414;
@@ -13,6 +13,7 @@
 .primary-navigation {
     display: flex;
     gap: 50px;
+    align-items: center;
 }
 
 .netflix-logo-btn {
@@ -28,15 +29,19 @@
     height: 100%;
 }
 
-.navigation {
-    list-style: none;
+#nav-menu {
+    display: block;
     padding: 0;
-    margin: 0;
+    border: none;
+    background: none;
+    color: white;
 }
 
-.navigation li {
+.nav-tab {
     display: inline-block;
-    margin-right: 16px;
+    list-style: none;
+    padding: 0;
+    margin: 0px 0px 0px 16px;
 }
 
 .secondary-navigation {
