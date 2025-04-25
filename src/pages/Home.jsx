@@ -5,17 +5,13 @@ import ContentSection from "../components/ContentSection.jsx";
 import Footer from "../components/Footer.jsx";
 
 export default function Home() {
-    return (
-        <div>
-            <Header />
-            
-            <main>
-                <TrailerSection />
-                   
-                <ContentSection />                
-            </main>
+  return (
+    <div>
+      <main>
+        <TrailerSection />
 
-            <Footer />
-        </div>
-    )
+        <ContentSection />
+      </main>
+    </div>
+  );
 }
