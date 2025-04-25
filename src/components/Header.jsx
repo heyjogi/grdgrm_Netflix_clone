@@ -7,11 +7,7 @@ export default function Header() {
             <a href="/" className="netflix-logo-btn">
                 <img src="https://assets.nflxext.com/en_us/layout/ecweb/common/logo-shadow2x.png" alt="Netflix Logo" />
             </a>
-            <ul className="navigation">
-                <li className="nav-tab">
-                    <a href="" id="nav-menu">메뉴</a>
-
-                </li>
+            <ul className="navigation-desktop">
                 <li className="nav-tab">
                     <a href="" id="current-active">홈</a>
                 </li>
@@ -22,7 +18,22 @@ export default function Header() {
                 <a href="" id="genreCategory">영화</a>
                 </li>
             </ul>
+
+            <div className='navigation-mobile'>
+                <button className="nav-tab" id="nav-menu">메뉴</button>
+                <ul className='dropdown-menu'>
+                    <li className="nav-tab">
+                        <a href="" id="current-active">홈</a>
+                    </li>
+                    <li className="nav-tab">
+                        <a href="" id="genreCategory">시리즈</a>
+                    </li>
+                    <li className="nav-tab">
+                    <a href="" id="genreCategory">영화</a>
+                    </li>
+                </ul>
             </div>
+        </div>
     
             <div className="secondary-navigation">
                 <div className="nav-element">
