@@ -93,7 +93,6 @@ export default function ContentRow({ title, id, fetchUrl, isLargeRow }) {
                 </svg>
               </button>
             </div>
-
             {movies.map((movie) => (
               <SwiperSlide key={movie.id}>
                 <div className="row-item">

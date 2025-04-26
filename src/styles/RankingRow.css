@@ -87,14 +87,26 @@
     border-radius: 2px;
 }
 
-.ranking-item {
+.ranking-poster {
     position: relative;
-    width: 180px;
+    width: 232px;  
+    height: 162px; 
     flex-shrink: 0;
-    flex: 0 0 15%
+  }
+
+.ranking-item {
+    width: 114px;
+    height: 162px;
+    object-fit: cover;
+    border-radius: 0px 2px 2px 0px;
+    position: absolute;
+    top: 0;
+    left: 110px; 
+    z-index: 1;
 }
 
-.ranking-item img {
+
+/* .ranking-item img {
     width: 114px;
     height: 162px;
     bottom: 0;
@@ -105,12 +117,12 @@
     right: 0;
     top: 0;
     border-radius: 0px 2px 2px 0px;
-}
+} */
 
 
-.ranking-item svg {
+.ranking-icon {
     bottom: 0;
-    left: -90;
+    left: 0px;
     position: absolute;
     right: auto;
     top: 0;
