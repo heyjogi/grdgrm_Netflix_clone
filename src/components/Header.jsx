@@ -30,11 +30,14 @@ export default function Header() {
         };
     }, []);
 
-    const handleSearchSubmit = (e) => {
-        if (e.key === "Enter") {
-            if (searchQuery.trim() !== "") {
-                navigate(`/search?query=${encodeURIComponent(searchQuery)}`);
-            }
+    const handleSearchChange = (e) => {
+        const value = e.target.value;
+        setSearchQuery(value);
+
+        if (value.trim() === "") {
+            navigate("/");
+        } else {
+            navigate(`/search?q=${encodeURIComponent(value)}`);
         }
     };
 
@@ -122,8 +125,7 @@ export default function Header() {
                         }`}
                         placeholder="제목, 사람, 장르"
                         value={searchQuery}
-                        onChange={(e) => setSearchQuery(e.target.value)}
-                        onKeyDown={handleSearchSubmit}
+                        onChange={handleSearchChange}
                     />
                 </div>
                 <div className="nav-element">
