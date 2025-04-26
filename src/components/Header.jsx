@@ -5,6 +5,8 @@ import "../styles/Header.css";
 export default function Header() {
     const [isSearchOpen, setIsSearchOpen] = useState(false);
     const [searchQuery, setSearchQuery] = useState("");
+    const [isScrolled, setIsScrolled] = useState(false);
+
     const searchContainerRef = useRef(null);
     const navigate = useNavigate();
 
@@ -41,8 +43,21 @@ export default function Header() {
         }
     };
 
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 0) {
+                setIsScrolled(true);
+            } else {
+                setIsScrolled(false);
+            }
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+
     return (
-        <div className="HeaderNav">
+        <div className={`HeaderNav ${isScrolled ? "scrolled" : ""}`}>
             <div className="primary-navigation">
                 <a href="/" className="netflix-logo-btn">
                     <img
