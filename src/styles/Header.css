@@ -4,7 +4,6 @@
     width: 100%;
     z-index: 999;
     display: flex;
-    align-items: first baseline;
     justify-content: space-between;
     align-items: center;
     padding: 0 48px;
@@ -28,13 +27,13 @@
 .netflix-logo-btn {
     display: block;
     justify-content: start;
-    width: 92px !important; 
+    width: 92px !important;
     height: 26px !important;
 }
 
 .netflix-logo-btn img {
     display: block;
-    width: auto; 
+    width: auto;
     height: 100%;
 }
 
@@ -55,17 +54,67 @@
 
 .secondary-navigation {
     display: flex;
-    align-items: baseline;
+    align-items: center;
     gap: 16px;
 }
 
-.search-tab, .notifications-tab {
-    background-color: #141414;
+.notifications-tab {
+    background: none;
+    border: none;
+    color: white;
+}
+
+.notifications-tab svg {
+    color: white !important;
+}
+
+.header-search-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.search-wrapper {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.4s ease;
+
+    width: 24px;
+    padding: 0;
+    background: none;
     border: none;
 }
 
-.search-tab, .notifications-tab  svg {
-    color: white !important;
+.search-wrapper.active {
+    width: 240px;
+    padding: 8px 12px;
+    background-color: black;
+    border: 1px solid white;
+    border-radius: 2px;
+}
+
+.search-icon-inside {
+    color: white;
+    margin-right: 6px;
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+}
+
+.search-input {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 14px;
+    width: 100%;
+    display: none;
+}
+
+.search-wrapper.active .search-input {
+    display: block;
 }
 
 
