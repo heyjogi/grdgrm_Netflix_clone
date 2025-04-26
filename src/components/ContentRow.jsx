@@ -1,9 +1,10 @@
 import "../styles/ContentRow.css";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import axios from "../api/axios";
 import { IMAGE_BASE_URL } from "../api/config";
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+import Modal from "./Modal";
 
 import "swiper/css";
 import "swiper/css/navigation";
@@ -14,6 +15,11 @@ export default function ContentRow({ title, id, fetchUrl, isLargeRow }) {
   const [movies, setMovies] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
   const [movieSelected, setMovieSelection] = useState({});
+  const [hoveredMovie, setHoveredMovie] = useState(null);
+  const [hoveredPosition, setHoveredPosition] = useState({ x: 0, y: 0 });
+  const [isHovering, setIsHovering] = useState(false);
+  const containerRef = useRef(null);
+  const hoverTimeoutRef = useRef(null);
 
   useEffect(() => {
     fetchMovieData();
@@ -25,8 +31,43 @@ export default function ContentRow({ title, id, fetchUrl, isLargeRow }) {
     return request;
   };
 
+  const handleMouseEnter = (e, movie) => {
+    clearTimeout(hoverTimeoutRef.current); // 기존 타임아웃 제거
+
+    const containerRect = containerRef.current.getBoundingClientRect();
+    const cardRect = e.currentTarget.getBoundingClientRect();
+    const newPosition = {
+      x: cardRect.left + cardRect.width / 2 - containerRect.left,
+      y: cardRect.top - containerRect.top - 120,
+    };
+
+    // 기존 호버 잠깐 끔
+    setIsHovering(false);
+    setHoveredMovie(null);
+
+    // 새 hover 살짝 딜레이 후 켜기
+    hoverTimeoutRef.current = setTimeout(() => {
+      setHoveredPosition(newPosition);
+      setHoveredMovie(movie);
+      setIsHovering(true);
+    }, 120); // ✨ 120ms 딜레이 (자연스러운 연결)
+  };
+
+  const handleMouseLeave = () => {
+    clearTimeout(hoverTimeoutRef.current); // 빠르게 나가면 hover 취소
+    setIsHovering(false);
+  };
+
+  useEffect(() => {
+    if (!isHovering) {
+      const timeout = setTimeout(() => {
+        setHoveredMovie(null);
+      }, 200); // 기존 모달 사라지는 시간
+      return () => clearTimeout(timeout);
+    }
+  }, [isHovering]);
   return (
-    <div className="content-row">
+    <div className="content-row" ref={containerRef}>
       <div className="content-title">
         <section className="row">
           <h2>{title}</h2>
@@ -95,7 +136,11 @@ export default function ContentRow({ title, id, fetchUrl, isLargeRow }) {
             </div>
             {movies.map((movie) => (
               <SwiperSlide key={movie.id}>
-                <div className="row-item">
+                <div
+                  className="row-item"
+                  onMouseEnter={(e) => handleMouseEnter(e, movie)}
+                  onMouseLeave={handleMouseLeave}
+                >
                   {" "}
                   <img
                     className={`row__poster ${
@@ -111,6 +156,15 @@ export default function ContentRow({ title, id, fetchUrl, isLargeRow }) {
               </SwiperSlide>
             ))}
           </Swiper>
+
+          {hoveredMovie && (
+            <Modal
+              movie={hoveredMovie}
+              position={hoveredPosition}
+              onMouseEnter={() => setIsHovering(true)}
+              onMouseLeave={() => setIsHovering(false)}
+            />
+          )}
         </section>
       </div>
     </div>
