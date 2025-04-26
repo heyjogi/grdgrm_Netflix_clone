@@ -117,7 +117,7 @@
   font-weight: 600 !important;
 }
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1200px) and (max-width: 1399px) {
   .row__poster {
     max-height: 160px;
   }
