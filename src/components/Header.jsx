@@ -66,49 +66,35 @@ export default function Header() {
                     />
                 </a>
 
-                <ul className="navigation-desktop">
+            <ul className="navigation-desktop">
+                <li className="nav-tab">
+                    <a href="/" id="current-active">홈</a>
+                </li>
+                <li className="nav-tab">
+                    <a href="/" id="genreCategory">시리즈</a>
+                </li>
+                <li className="nav-tab">
+                <a href="/" id="genreCategory">영화</a>
+                </li>
+            </ul>
+
+            <div className='navigation-mobile'>
+                <button className="nav-tab" id="nav-menu">메뉴</button>
+                <ul className="dropdown-menu">
                     <li className="nav-tab">
-                        <a href="/" id="current-active">
-                            홈
-                        </a>
+                        <a href="/" id="current-active">홈</a>
                     </li>
                     <li className="nav-tab">
-                        <a href="/" id="genreCategory">
-                            시리즈
-                        </a>
+                        <a href="/" id="genreCategory">시리즈</a>
                     </li>
                     <li className="nav-tab">
-                        <a href="/" id="genreCategory">
-                            영화
-                        </a>
+                    <a href="/" id="genreCategory">영화</a>
                     </li>
                 </ul>
-
-                <div className="navigation-mobile">
-                    <button className="nav-tab" id="nav-menu">
-                        메뉴
-                    </button>
-                    <ul className="dropdown-menu">
-                        <li className="nav-tab">
-                            <a href="" id="current-active">
-                                홈
-                            </a>
-                        </li>
-                        <li className="nav-tab">
-                            <a href="" id="genreCategory">
-                                시리즈
-                            </a>
-                        </li>
-                        <li className="nav-tab">
-                            <a href="" id="genreCategory">
-                                영화
-                            </a>
-                        </li>
-                    </ul>
-                </div>
             </div>
-
-            <div className="secondary-navigation">
+        </div>
+    
+        <div className="secondary-navigation">
                 <div
                     className="nav-element header-search-container"
                     ref={searchContainerRef}

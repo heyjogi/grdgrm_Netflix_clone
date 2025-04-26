@@ -1,15 +1,16 @@
 import "../styles/RankingRow.css";
 import noImage from '../assets/no-image.svg';
-
+import requests from "../api/requests.jsx"
 
 export default function RankingRow({ contents }) {
+    const movies = Array(10).fill({}); //10개 짜리 빈 영화 데이터
     return (
        <div className="ranking-row">
         <div className="ranking-title">
             <h2>top10</h2>
 
             <ul className="ranking-indicator">
-                {contents.slice(0, 2).map((_, i) => (
+                {movies.slice(0, 2).map((_, i) => (
                     <li key={i} className="dot"></li>
                 ))}
             </ul>
@@ -40,7 +41,26 @@ export default function RankingRow({ contents }) {
                 </button>
 
                 <div className="ranking-slider-track">
-                    {contents.map((item, index) => (
+                    {movies.map((movie, index) => (
+                        <div key={index} className="ranking-poster">
+                            <svg id={`rank-${index + 1}`} 
+                                width="100%" height="100%"
+                                viewBox={contents[index]?.viewBox}
+                                className={`ranking-icon svg-icon-rank-${index + 1}`}>
+
+                                <path stroke="#595959" strokeWidth="4" d={contents[index]?.path}></path>
+                            </svg>
+                            <img 
+                                key = {index}
+                                className = "ranking-item"
+                                src={noImage}
+                                // {movie.poster_path 
+                                // ? `https://image.tmdb.org/t/p/original/${movie.poster_path}` : noImage}
+                                alt="임시 포스터"
+                            />
+                        </div>
+                    ))}
+                    {/* {contents.map((item, index) => (
                         <div key={index} className={`ranking-item ranking-item-${index + 1}`}>
                             <svg id={`rank-${index + 1}`} 
                                 width="100%" height="100%"
@@ -54,7 +74,7 @@ export default function RankingRow({ contents }) {
                                 alt={item.name || "기본 포스터"}
                             />
                         </div>
-                    ))}
+                    ))} */}
                 </div>
             </div>
         </div>
