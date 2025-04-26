@@ -7,6 +7,8 @@ const requests = {
   fetchMovieTopRated: `/movie/top_rated`,
   fetchSeriesPopular: `/tv/popular`,
   fetchSeriesTopRated: `/tv/top_rated`,
+  fetchActionMovies: `/discover/movie?with_genres=28`,
+  fetchDramaMovies: `/discover/movie?with_genres=18`,
 };
 
 export default requests;

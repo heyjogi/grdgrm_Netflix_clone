@@ -1,51 +1,75 @@
 import "../styles/ContentRow.css";
-import noImage from '../assets/no-image.svg';
+import React, { useEffect, useState } from "react";
+import axios from "../api/axios";
+import { IMAGE_BASE_URL } from "../api/config";
+import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
 
-export default function ContentRow({ title, contents }) {
-    return (
-       <div className = "content-row">
-        <div className="content-title">
-            <h2>{title}</h2>
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/scrollbar";
 
-            <ul className="content-indicator">
-                {contents.slice(0, 10).map((_, i) => (
-                    <li key = {i} className = "dot"></li>
-                ))}
-            </ul>
-        </div>
+export default function ContentRow({ title, id, fetchUrl, isLargeRow }) {
+  const [movies, setMovies] = useState([]);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [movieSelected, setMovieSelection] = useState({});
 
-            <div className = "content-slider">
-            <button className="slide-btn-left">
-                    <svg xmlns="http://www.w3.org/2000/svg" 
-                        width="24" height="24" viewBox="0 0 24 24" 
-                        fill="none">
-                        <path
-                            d="M15 6L9 12L15 18" 
-                            stroke="currentColor" strokeWidth="3" 
-                            strokeLinecap="round" strokeLinejoin="round" 
-                        />
-                    </svg>
-                </button>
-                <button className="slide-btn-right">
-                    <svg xmlns="http://www.w3.org/2000/svg" 
-                        width="24" height="24" viewBox="0 0 24 24" 
-                        fill="none">
-                        <path
-                            d="M9 6L15 12L9 18" 
-                            stroke="currentColor" strokeWidth="3" 
-                            strokeLinecap="round" strokeLinejoin="round"
-                        />
-                    </svg>
-                </button>
+  useEffect(() => {
+    fetchMovieData();
+  }, [fetchUrl]);
 
-                <div className="content-slider-track">
-                    {contents.map((item, index) => (
-                        <div key = {index} className = {`content-item content-item-${index+1}`}>
-                            <img src={item.thumbnail || noImage} alt = {item.name || "기본 포스터"} />
-                        </div>
-                    ))}
-                </div>
-            </div>
-        </div>    
-    );
+  const fetchMovieData = async () => {
+    const request = await axios.get(fetchUrl);
+    console.log(request.data); // 추가
+    setMovies(request.data.results);
+    return request;
+  };
+
+  return (
+    <div className="content-row">
+      <div className="content-title">
+        <section className="row">
+          <h2>{title}</h2>
+          <Swiper
+            modules={[Navigation, Pagination, Scrollbar, A11y]}
+            navigation
+            pagination={{ clickable: true }}
+            loop={true}
+            breakpoints={{
+              1378: {
+                slidesPerView: 5,
+                slidesPerGroup: 5,
+              },
+              998: {
+                slidesPerView: 5,
+                slidesPerGroup: 5,
+              },
+              625: {
+                slidesPerView: 4,
+                slidesPerGroup: 4,
+              },
+              0: {
+                slidesPerView: 3,
+                slidesPerGroup: 3,
+              },
+            }}
+          >
+            {movies.map((movie) => (
+              <SwiperSlide key={movie.id}>
+                <img
+                  className={`row__poster ${isLargeRow && "row__posterLarge"}`}
+                  src={`${IMAGE_BASE_URL}${
+                    isLargeRow ? movie.poster_path : movie.backdrop_path
+                  }`}
+                  loading="lazy"
+                  alt={movie.title || movie.name || "영화 포스터"}
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </section>
+      </div>
+    </div>
+  );
 }
