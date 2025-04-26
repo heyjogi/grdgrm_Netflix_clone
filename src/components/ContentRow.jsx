@@ -33,7 +33,10 @@ export default function ContentRow({ title, id, fetchUrl, isLargeRow }) {
           <h2>{title}</h2>
           <Swiper
             modules={[Navigation, Pagination, Scrollbar, A11y]}
-            navigation
+            navigation={{
+              prevEl: ".row-slider-container .slide-btn-left",
+              nextEl: ".row-slider-container .slide-btn-right",
+            }}
             pagination={{ clickable: true }}
             loop={true}
             breakpoints={{
@@ -55,16 +58,58 @@ export default function ContentRow({ title, id, fetchUrl, isLargeRow }) {
               },
             }}
           >
+            <div className="row-slider-container">
+              <button className="slide-btn-left">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                >
+                  <path
+                    d="M15 6L9 12L15 18"
+                    stroke="currentColor"
+                    strokeWidth="3"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </button>
+              <button className="slide-btn-right">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                >
+                  <path
+                    d="M9 6L15 12L9 18"
+                    stroke="currentColor"
+                    strokeWidth="3"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </button>
+            </div>
+
             {movies.map((movie) => (
               <SwiperSlide key={movie.id}>
-                <img
-                  className={`row__poster ${isLargeRow && "row__posterLarge"}`}
-                  src={`${IMAGE_BASE_URL}${
-                    isLargeRow ? movie.poster_path : movie.backdrop_path
-                  }`}
-                  loading="lazy"
-                  alt={movie.title || movie.name || "영화 포스터"}
-                />
+                <div className="row-item">
+                  {" "}
+                  <img
+                    className={`row__poster ${
+                      isLargeRow && "row__posterLarge"
+                    }`}
+                    src={`${IMAGE_BASE_URL}${
+                      isLargeRow ? movie.poster_path : movie.backdrop_path
+                    }`}
+                    loading="lazy"
+                    alt={movie.title || movie.name || "영화 포스터"}
+                  />
+                </div>
               </SwiperSlide>
             ))}
           </Swiper>
