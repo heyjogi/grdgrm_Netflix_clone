@@ -137,7 +137,7 @@ export default function TrailerSection() {
           <div className="age-badge">
             <svg id="maturity-rating-977" 
               viewBox="0 0 100 100" 
-              class="15+">
+              className="15+">
               <path id="Fill---Orange" 
                 fill="#CD6D34" 
                 d="M88.727 100H11.27C5.05 100 0 94.952 0 88.727V11.273C0 5.047 5.05 0 11.27 0h77.457C94.952 0 100 5.047 100 11.273v77.454C100 94.952 94.952 100 88.727 100">

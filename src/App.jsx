@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import SearchPage from "./pages/SearchPage";
 import "./App.css";
@@ -11,7 +11,7 @@ import Footer from "./components/Footer.jsx";
 import requests from "./api/requests.jsx"
 
 export default function App() {
-  const [isProfileSelected, setIsProfileSelected] = useState(false);
+  const [isProfileSelected, setIsProfileSelected] = useState(true);
 
   return (
     <div className="App">
