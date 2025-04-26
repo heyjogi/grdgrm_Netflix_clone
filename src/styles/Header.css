@@ -68,7 +68,61 @@
     color: white !important;
 }
 
+
+.header-search-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.search-wrapper {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.4s ease;
+
+    width: 24px;
+    padding: 0;
+    background: none;
+    border: none;
+}
+
+.search-wrapper.active {
+    width: 240px;
+    padding: 8px 12px;
+    background-color: black;
+    border: 1px solid white;
+    border-radius: 2px;
+}
+
+.search-icon-inside {
+    color: white;
+    margin-right: 6px;
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+}
+
+.search-input {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 14px;
+    width: 100%;
+    display: none;
+}
+
+.search-wrapper.active .search-input {
+    display: block;
+}
+
+
 .profile-icon {
+    width: 32px;
+    height: 32px;
+    object-fit: cover;
     border-radius: 10%;
 }
 

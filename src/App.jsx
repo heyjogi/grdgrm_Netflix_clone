@@ -11,12 +11,14 @@ import Footer from "./components/Footer.jsx";
 import requests from "./api/requests.jsx"
 
 export default function App() {
-  const [isProfileSelected, setIsProfileSelected] = useState(true);
+  const [isProfileSelected, setIsProfileSelected] = useState(() => {
+    return localStorage.getItem("profileSelected") === "true";
+  });
 
   return (
     <div className="App">
 
-      <Header />
+      {isProfileSelected && <Header />}
 
       <Routes>
         <Route
@@ -124,7 +126,10 @@ export default function App() {
               <Footer />
               </>
             ) : (
-              <div>프로필 선택 화면</div>
+              <ProfileSelect onSelect={() => {
+                localStorage.setItem("profileSelected", "true");
+                setIsProfileSelected(true);
+              }} />
             )
           }
         />
