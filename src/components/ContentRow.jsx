@@ -21,7 +21,6 @@ export default function ContentRow({ title, id, fetchUrl, isLargeRow }) {
 
   const fetchMovieData = async () => {
     const request = await axios.get(fetchUrl);
-    console.log(request.data); // 추가
     setMovies(request.data.results);
     return request;
   };
