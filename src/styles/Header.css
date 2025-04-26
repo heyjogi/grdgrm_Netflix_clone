@@ -68,7 +68,7 @@
     color: white !important;
 }
 
-.search-container {
+.header-search-container {
     display: flex;
     align-items: center;
     position: relative;

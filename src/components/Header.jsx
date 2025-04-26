@@ -110,7 +110,7 @@ export default function Header() {
 
             <div className="secondary-navigation">
                 <div
-                    className="nav-element search-container"
+                    className="nav-element header-search-container"
                     ref={searchContainerRef}
                 >
                     <div
