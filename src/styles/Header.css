@@ -95,6 +95,76 @@
     border-radius: 10%;
 }
 
+.profile-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.profile-dropdown {
+    position: absolute;
+    top: 40px;
+    right: 0;
+    background-color: #141414;
+    color: white;
+    padding: 12px;
+    border-radius: 4px;
+    width: 200px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+    z-index: 999;
+}
+
+.profile-wrapper:hover .profile-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.profile-dropdown ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.profile-dropdown li {
+    display: flex;
+    align-items: center;
+    gap: 12px; /* 아이콘과 텍스트 간 간격 */
+    font-size: 14px;
+    padding: 8px 12px;
+    cursor: pointer;
+    color: white;
+    transition: background-color 0.2s ease;
+}
+
+.profile-dropdown li i {
+    font-size: 18px; /* 이모지(아이콘) 크기 증가 */
+    width: 20px; /* 정렬 맞춤: 고정 너비 */
+    text-align: center;
+}
+
+/* 로그아웃 버튼 스타일 */
+.logout-button {
+    border-top: 1px solid #444;
+    padding: 12px;
+    text-align: center; /* 가운데 정렬 */
+    font-size: 14px;
+    color: white;
+    cursor: pointer;
+}
+
+.profile-dropdown li span:hover,
+.logout-button:hover {
+    text-decoration: underline;
+}
+
+.logout-button {
+    border-top: 1px solid #333;
+    margin-top: 10px;
+}
+
 .HeaderNav .navigation-desktop {
     display: none;
 }

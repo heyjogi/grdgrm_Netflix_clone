@@ -149,13 +149,34 @@ export default function Header() {
                         </svg>
                     </button>
                 </div>
-                <div className="nav-element">
-                    <div className="account-tab">
-                        <img
-                            className="profile-icon"
-                            src="https://occ-0-8232-988.1.nflxso.net/dnm/api/v6/vN7bi_My87NPKvsBoib006Llxzg/AAAABTZ2zlLdBVC05fsd2YQAR43J6vB1NAUBOOrxt7oaFATxMhtdzlNZ846H3D8TZzooe2-FT853YVYs8p001KVFYopWi4D4NXM.png?r=229"
-                            alt=""
-                        />
+                <div className="nav-element profile-wrapper">
+                    <img
+                        className="profile-icon"
+                        src="https://occ-0-8232-988.1.nflxso.net/dnm/api/v6/vN7bi_My87NPKvsBoib006Llxzg/AAAABTZ2zlLdBVC05fsd2YQAR43J6vB1NAUBOOrxt7oaFATxMhtdzlNZ846H3D8TZzooe2-FT853YVYs8p001KVFYopWi4D4NXM.png?r=229"
+                        alt="Netflix Profile Icon"
+                    />
+                    <div className="profile-dropdown">
+                        <ul>
+                            <li>
+                                <i className="fa-solid fa-pen"></i>
+                                <span>프로필 관리</span>
+                            </li>
+                            <li>
+                                <i className="fa-solid fa-face-smile"></i>
+                                <span>프로필 이전</span>
+                            </li>
+                            <li>
+                                <i className="fa-solid fa-user"></i>
+                                <span>계정</span>
+                            </li>
+                            <li>
+                                <i className="fa-solid fa-circle-question"></i>
+                                <span>고객 센터</span>
+                            </li>
+                        </ul>
+                        <div className="logout-button">
+                            넷플릭스에서 로그아웃
+                        </div>
                     </div>
                 </div>
             </div>
