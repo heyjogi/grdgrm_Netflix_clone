@@ -6,6 +6,11 @@ import requests from "../api/requests.jsx";
 export default function ContentSection() {
   return (
     <section className="content-section">
+      <ContentRow
+        title="회원님을 위해 엄선한 오늘의 콘텐츠"
+        id="PM"
+        fetchUrl={requests.fetchMoviePopular}
+      />
       <RankingRow
         contents={[
           {
@@ -71,10 +76,14 @@ export default function ContentSection() {
         ]}
       />
       <ContentRow
-        title="회원님을 위해 엄선한 오늘의 콘텐츠"
-        id="PM"
-        fetchUrl={requests.fetchMoviePopular}
-        isLargeRow
+        title="온 가족을 위한 영화"
+        id="DM"
+        fetchUrl={requests.fetchDramaMovies}
+      />
+      <ContentRow
+        title="액션 영화"
+        id="AM"
+        fetchUrl={requests.fetchActionMovies}
       />
     </section>
   );
