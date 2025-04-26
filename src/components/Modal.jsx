@@ -1,23 +1,40 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/Modal.css";
 import { IMAGE_BASE_URL } from "../api/config";
 import DetailModal from "./DetailModal";
+import axios from "../api/axios";
 
 export default function Modal({ movie, position, onMouseEnter, onMouseLeave }) {
   const [isLiked, setIsLiked] = useState(false);
   const [isDetailOpen, setIsDetailOpen] = useState(false);
+  const [genres, setGenres] = useState([]);
+
+  useEffect(() => {
+    if (movie?.id) {
+      fetchMovieDetails(movie.id);
+    }
+  }, [movie]);
+
+  const fetchMovieDetails = async (movieId) => {
+    try {
+      const response = await axios.get(`/movie/${movieId}`);
+      setGenres(response.data.genres || []);
+    } catch (error) {
+      console.error("영화 상세정보 불러오기 실패:", error);
+    }
+  };
 
   const handleLikeToggle = () => {
     setIsLiked((prev) => !prev);
   };
 
   const handleDetailClick = () => {
-    setIsDetailOpen(true); // 디테일 모달 열기
+    setIsDetailOpen(true);
   };
 
   const handleCloseDetail = () => {
-    setIsDetailOpen(false); // 디테일 모달 닫기
-    onMouseLeave(); // ⭐ hover 모달 강제 끄기
+    setIsDetailOpen(false);
+    onMouseLeave();
   };
 
   const handleMouseEnterInternal = () => {
@@ -40,9 +57,9 @@ export default function Modal({ movie, position, onMouseEnter, onMouseLeave }) {
           top: position.y + 30,
           left: position.x,
           transform: "translate(-50%, 0) scale(1)",
-          opacity: isDetailOpen ? 0 : 1, // 디테일 열리면 hover 숨기기
+          opacity: isDetailOpen ? 0 : 1,
           pointerEvents: isDetailOpen ? "none" : "auto",
-          transition: "opacity 0.3s ease", // 부드럽게
+          transition: "opacity 0.3s ease",
         }}
         onMouseEnter={handleMouseEnterInternal}
         onMouseLeave={handleMouseLeaveInternal}
@@ -117,11 +134,11 @@ export default function Modal({ movie, position, onMouseEnter, onMouseLeave }) {
 
           {/* 장르 */}
           <div className="modal-tags">
-            {movie.genres && movie.genres.length > 0 ? (
-              movie.genres.map((genre, index) => (
+            {genres.length > 0 ? (
+              genres.map((genre, index) => (
                 <span key={genre.id || index}>
                   {genre.name}
-                  {index !== movie.genres.length - 1 && " • "}
+                  {index !== genres.length - 1 && " • "}
                 </span>
               ))
             ) : (

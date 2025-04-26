@@ -32,7 +32,7 @@ export default function ContentRow({ title, id, fetchUrl, isLargeRow }) {
   };
 
   const handleMouseEnter = (e, movie) => {
-    clearTimeout(hoverTimeoutRef.current); // 기존 타임아웃 제거
+    clearTimeout(hoverTimeoutRef.current);
 
     const containerRect = containerRef.current.getBoundingClientRect();
     const cardRect = e.currentTarget.getBoundingClientRect();
@@ -41,20 +41,18 @@ export default function ContentRow({ title, id, fetchUrl, isLargeRow }) {
       y: cardRect.top - containerRect.top - 120,
     };
 
-    // 기존 호버 잠깐 끔
     setIsHovering(false);
     setHoveredMovie(null);
 
-    // 새 hover 살짝 딜레이 후 켜기
     hoverTimeoutRef.current = setTimeout(() => {
       setHoveredPosition(newPosition);
       setHoveredMovie(movie);
       setIsHovering(true);
-    }, 120); // ✨ 120ms 딜레이 (자연스러운 연결)
+    }, 120);
   };
 
   const handleMouseLeave = () => {
-    clearTimeout(hoverTimeoutRef.current); // 빠르게 나가면 hover 취소
+    clearTimeout(hoverTimeoutRef.current);
     setIsHovering(false);
   };
 
@@ -62,7 +60,7 @@ export default function ContentRow({ title, id, fetchUrl, isLargeRow }) {
     if (!isHovering) {
       const timeout = setTimeout(() => {
         setHoveredMovie(null);
-      }, 200); // 기존 모달 사라지는 시간
+      }, 200);
       return () => clearTimeout(timeout);
     }
   }, [isHovering]);

@@ -74,12 +74,12 @@
   background-color: rgba(109, 109, 110, 0.7);
 }
 
-.mute-btn {
+.mute_btn {
   position: absolute;
   bottom: 20px;
   right: 20px;
   background: rgba(51, 51, 51, 0.6);
-  border: none;
+  border: 2px solid rgba(255, 255, 255, 0.6);
   border-radius: 50%;
   width: 50px;
   height: 50px;
@@ -91,8 +91,9 @@
   z-index: 2;
 }
 
-.mute-btn:hover {
+.mute_btn:hover {
   background-color: rgba(109, 109, 110, 0.7);
+  border-color: white;
 }
 
 .detail-modal-content {
@@ -131,20 +132,20 @@
   position: absolute;
   top: 10px;
   right: 15px;
-  background: rgba(0, 0, 0, 0.6); /* 검은색 반투명 배경 */
+  background: rgba(0, 0, 0, 0.6);
   color: white;
   font-size: 24px;
   border: none;
   cursor: pointer;
-  border-radius: 50%; /* 동그라미 */
+  border-radius: 50%;
   width: 40px;
   height: 40px;
-  display: flex; /* 가운데 정렬 */
+  display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 3; /* 다른 버튼들보다 위에 */
+  z-index: 3;
 }
 
 .detail-modal-close:hover {
-  background: rgba(109, 109, 110, 0.7); /* hover 시 살짝 더 밝게 */
+  background: rgba(109, 109, 110, 0.7);
 }
