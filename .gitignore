@@ -26,3 +26,9 @@ dist-ssr
 # 환경 변수 파일 무시
 .env
 .env.*
+
+# 빌드 아티팩트 무시
+.vite/
+
+# prettier 설정 파일 무시
+.prettierrc
