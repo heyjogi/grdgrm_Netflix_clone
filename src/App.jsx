@@ -1,17 +1,27 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import Footer from "./components/Footer.jsx";
+import Header from "./components/Header.jsx";
 import Home from "./pages/Home.jsx";
-import Search from "./pages/SearchPage/index.jsx";
+import SearchPage from "./pages/SearchPage";
 import "./App.css";
 
 export default function App() {
     return (
         <div className="App">
-            <BrowserRouter>
-                <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/search" element={<Search />} />
-                </Routes>
-            </BrowserRouter>
+            <Header />
+            <Routes>
+                <Route
+                    path="/"
+                    element={
+                        <>
+                            <Home />
+                            <Footer />
+                        </>
+                    }
+                />
+                <Route path="/search" element={<SearchPage />} />
+            </Routes>
         </div>
     );
 }

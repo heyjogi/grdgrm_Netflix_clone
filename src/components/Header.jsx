@@ -5,6 +5,8 @@ import "../styles/Header.css";
 export default function Header() {
     const [isSearchOpen, setIsSearchOpen] = useState(false);
     const [searchQuery, setSearchQuery] = useState("");
+    const [isScrolled, setIsScrolled] = useState(false);
+
     const searchContainerRef = useRef(null);
     const navigate = useNavigate();
 
@@ -41,8 +43,21 @@ export default function Header() {
         }
     };
 
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 0) {
+                setIsScrolled(true);
+            } else {
+                setIsScrolled(false);
+            }
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+
     return (
-        <div className="HeaderNav">
+        <div className={`HeaderNav ${isScrolled ? "scrolled" : ""}`}>
             <div className="primary-navigation">
                 <a href="/" className="netflix-logo-btn">
                     <img
@@ -95,20 +110,27 @@ export default function Header() {
 
             <div className="secondary-navigation">
                 <div
-                    className="nav-element search-container"
+                    className="nav-element header-search-container"
                     ref={searchContainerRef}
                 >
-                    <button className="search-tab" onClick={toggleSearch}>
+                    <div
+                        className={`search-wrapper ${
+                            isSearchOpen ? "active" : ""
+                        }`}
+                        onClick={() => {
+                            if (!isSearchOpen) toggleSearch();
+                        }}
+                    >
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             fill="none"
                             role="img"
                             viewBox="0 0 24 24"
-                            width="24"
-                            height="24"
+                            width="20"
+                            height="20"
                             data-icon="MagnifyingGlassStandard"
                             aria-hidden="true"
-                            className="search-icon"
+                            className="search-icon-inside"
                         >
                             <path
                                 fillRule="evenodd"
@@ -117,16 +139,14 @@ export default function Header() {
                                 fill="currentColor"
                             ></path>
                         </svg>
-                    </button>
-                    <input
-                        type="text"
-                        className={`search-input ${
-                            isSearchOpen ? "active" : ""
-                        }`}
-                        placeholder="제목, 사람, 장르"
-                        value={searchQuery}
-                        onChange={handleSearchChange}
-                    />
+                        <input
+                            type="text"
+                            className="search-input"
+                            placeholder="제목, 사람, 장르"
+                            value={searchQuery}
+                            onChange={handleSearchChange}
+                        />
+                    </div>
                 </div>
                 <div className="nav-element">
                     <button className="notifications-tab">
@@ -149,13 +169,37 @@ export default function Header() {
                         </svg>
                     </button>
                 </div>
-                <div className="nav-element">
-                    <div className="account-tab">
+                <div className="nav-element profile-wrapper">
+                    <div className="profile-trigger">
                         <img
                             className="profile-icon"
                             src="https://occ-0-8232-988.1.nflxso.net/dnm/api/v6/vN7bi_My87NPKvsBoib006Llxzg/AAAABTZ2zlLdBVC05fsd2YQAR43J6vB1NAUBOOrxt7oaFATxMhtdzlNZ846H3D8TZzooe2-FT853YVYs8p001KVFYopWi4D4NXM.png?r=229"
-                            alt=""
+                            alt="Netflix Profile Icon"
                         />
+                        <span className="triangle-icon"></span>
+                    </div>
+                    <div className="profile-dropdown">
+                        <ul>
+                            <li>
+                                <i className="fa-solid fa-pen"></i>
+                                <span>프로필 관리</span>
+                            </li>
+                            <li>
+                                <i className="fa-solid fa-face-smile"></i>
+                                <span>프로필 이전</span>
+                            </li>
+                            <li>
+                                <i className="fa-solid fa-user"></i>
+                                <span>계정</span>
+                            </li>
+                            <li>
+                                <i className="fa-solid fa-circle-question"></i>
+                                <span>고객 센터</span>
+                            </li>
+                        </ul>
+                        <div className="logout-button">
+                            넷플릭스에서 로그아웃
+                        </div>
                     </div>
                 </div>
             </div>
