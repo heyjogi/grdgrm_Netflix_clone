@@ -1,5 +1,5 @@
 
-.HeaderNav {
+/* .HeaderNav {
     display: flex;
     align-items: first baseline;
     justify-content: space-between;
@@ -8,6 +8,19 @@
     height: 50px;
     font-size: 14px;
     position: relative;
+} */
+.HeaderNav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 30px;
+    z-index: 1;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition-timing-function: ease-in;
+    transition: all 0.5s;
 }
 
 .primary-navigation {

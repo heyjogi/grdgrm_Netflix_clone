@@ -1,14 +1,16 @@
 import "../styles/ContentRow.css";
 import noImage from '../assets/no-image.svg';
+import requests from "../api/requests.jsx"
 
-export default function ContentRow({ title, contents }) {
+export default function ContentRow({ title }) {
+    const movies = Array(40).fill({}); //40개 짜리 빈 영화 데이터
     return (
        <div className = "content-row">
         <div className="content-title">
             <h2>{title}</h2>
 
             <ul className="content-indicator">
-                {contents.slice(0, 10).map((_, i) => (
+                {movies.slice(0, 10).map((_, i) => (
                     <li key = {i} className = "dot"></li>
                 ))}
             </ul>
@@ -39,11 +41,16 @@ export default function ContentRow({ title, contents }) {
                 </button>
 
                 <div className="content-slider-track">
-                    {contents.map((item, index) => (
-                        <div key = {index} className = {`content-item content-item-${index+1}`}>
-                            <img src={item.thumbnail || noImage} alt = {item.name || "기본 포스터"} />
-                        </div>
-                    ))}
+                {movies.map((movie, index) => (
+                    <img 
+                        key = {index}
+                        className = "content-item"
+                        src={noImage}
+                        // {movie.poster_path 
+                        // ? `https://image.tmdb.org/t/p/original/${movie.poster_path}` : noImage}
+                        alt="임시 포스터"
+                    />
+                ))}
                 </div>
             </div>
         </div>    
