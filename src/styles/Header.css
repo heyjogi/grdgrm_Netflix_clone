@@ -58,13 +58,12 @@
     gap: 16px;
 }
 
-.search-tab,
 .notifications-tab {
-    background-color: #141414;
+    background: none;
     border: none;
+    color: white;
 }
 
-.search-tab,
 .notifications-tab svg {
     color: white !important;
 }
@@ -75,29 +74,48 @@
     position: relative;
 }
 
-.search-input {
-    width: 0;
-    opacity: 0;
+.search-wrapper {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.4s ease;
+
+    /* ✅ 기본 상태는 아이콘만! */
+    width: 24px;
     padding: 0;
-    margin-left: 8px;
-    transition: width 0.4s ease, opacity 0.4s ease, padding 0.4s ease;
-    background-color: transparent;
+    background: none;
+    border: none;
+}
+
+.search-wrapper.active {
+    width: 240px;
+    padding: 8px 12px;
+    background-color: black;
     border: 1px solid white;
-    color: white;
-    font-size: 14px;
     border-radius: 2px;
 }
 
-.search-input.active {
-    width: 200px;
-    opacity: 1;
-    padding: 4px 8px;
+.search-icon-inside {
+    color: white;
+    margin-right: 6px;
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
 }
 
-.search-tab {
-    background: none;
+.search-input {
+    background-color: transparent;
     border: none;
+    outline: none;
     color: white;
+    font-size: 14px;
+    width: 100%;
+    display: none;
+}
+
+.search-wrapper.active .search-input {
+    display: block;
 }
 
 .profile-icon {

@@ -113,17 +113,24 @@ export default function Header() {
                     className="nav-element search-container"
                     ref={searchContainerRef}
                 >
-                    <button className="search-tab" onClick={toggleSearch}>
+                    <div
+                        className={`search-wrapper ${
+                            isSearchOpen ? "active" : ""
+                        }`}
+                        onClick={() => {
+                            if (!isSearchOpen) toggleSearch();
+                        }}
+                    >
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             fill="none"
                             role="img"
                             viewBox="0 0 24 24"
-                            width="24"
-                            height="24"
+                            width="20"
+                            height="20"
                             data-icon="MagnifyingGlassStandard"
                             aria-hidden="true"
-                            className="search-icon"
+                            className="search-icon-inside"
                         >
                             <path
                                 fillRule="evenodd"
@@ -132,16 +139,14 @@ export default function Header() {
                                 fill="currentColor"
                             ></path>
                         </svg>
-                    </button>
-                    <input
-                        type="text"
-                        className={`search-input ${
-                            isSearchOpen ? "active" : ""
-                        }`}
-                        placeholder="제목, 사람, 장르"
-                        value={searchQuery}
-                        onChange={handleSearchChange}
-                    />
+                        <input
+                            type="text"
+                            className="search-input"
+                            placeholder="제목, 사람, 장르"
+                            value={searchQuery}
+                            onChange={handleSearchChange}
+                        />
+                    </div>
                 </div>
                 <div className="nav-element">
                     <button className="notifications-tab">
