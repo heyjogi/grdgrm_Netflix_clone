@@ -1,125 +1,116 @@
 .HeaderNav {
-  display: flex;
-  align-items: first baseline;
-  justify-content: space-between;
-  padding: 20px 44px;
-  background-color: #141414;
-  height: 50px;
-  font-size: 14px;
-  position: relative;
+    display: flex;
+    align-items: first baseline;
+    justify-content: space-between;
+    padding: 20px 44px;
+    background-color: #141414;
+    height: 50px;
+    font-size: 14px;
+    position: relative;
 }
 
 .primary-navigation {
-  display: flex;
-  gap: 50px;
-  align-items: center;
+    display: flex;
+    gap: 50px;
+    align-items: center;
 }
 
 .netflix-logo-btn {
-  display: block;
-  justify-content: start;
-  width: 92px !important;
-  height: 26px !important;
+    display: block;
+    justify-content: start;
+    width: 92px !important;
+    height: 26px !important;
 }
 
 .netflix-logo-btn img {
-  display: block;
-  width: auto;
-  height: 100%;
+    display: block;
+    width: auto;
+    height: 100%;
 }
 
 #nav-menu {
-  display: block;
-  padding: 0;
-  border: none;
-  background: none;
-  color: white;
+    display: block;
+    padding: 0;
+    border: none;
+    background: none;
+    color: white;
 }
 
 .nav-tab {
-  display: inline-block;
-  list-style: none;
-  padding: 0;
-  margin: 0px 0px 0px 16px;
+    display: inline-block;
+    list-style: none;
+    padding: 0;
+    margin: 0px 0px 0px 16px;
 }
 
 .secondary-navigation {
-  display: flex;
-  align-items: baseline;
-  gap: 16px;
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
 }
 
 .search-tab,
 .notifications-tab {
-  background-color: #141414;
-  border: none;
+    background-color: #141414;
+    border: none;
 }
 
 .search-tab,
 .notifications-tab svg {
-  color: white !important;
+    color: white !important;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.search-input {
+    width: 0;
+    opacity: 0;
+    padding: 0;
+    margin-left: 8px;
+    transition: width 0.4s ease, opacity 0.4s ease, padding 0.4s ease;
+    background-color: transparent;
+    border: 1px solid white;
+    color: white;
+    font-size: 14px;
+    border-radius: 2px;
+}
+
+.search-input.active {
+    width: 200px;
+    opacity: 1;
+    padding: 4px 8px;
+}
+
+.search-tab {
+    background: none;
+    border: none;
+    color: white;
 }
 
 .profile-icon {
-  border-radius: 10%;
+    border-radius: 10%;
 }
 
 .HeaderNav .navigation-desktop {
-  display: none;
+    display: none;
 }
 
 .HeaderNav .navigation-mobile {
-  display: flex;
-  gap: 20px;
+    display: flex;
+    gap: 20px;
 }
 
 @media screen and (min-width: 1024px) {
-  .HeaderNav .navigation-desktop {
-    display: flex;
-    gap: 20px;
-  }
+    .HeaderNav .navigation-desktop {
+        display: flex;
+        gap: 20px;
+    }
 
-  .HeaderNav .navigation-mobile {
-    display: none;
-  }
-}
-
-.search-box {
-  display: flex;
-  align-items: center;
-  border: 1px solid white;
-  background-color: transparent;
-  height: 32px;
-  margin-left: auto;
-  overflow: hidden;
-
-  /* 초기 숨김 상태 */
-  width: 0;
-  opacity: 0;
-
-  transition: none;
-}
-
-.search-box.show {
-  width: 220px;
-  opacity: 1;
-  transition: all 0.3s ease; /* 열릴 때만 애니메이션 적용 */
-}
-
-.search-icon-inline {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 24px;
-  margin-right: 6px;
-  margin-left: 8px;
-}
-
-.nav__input {
-  background-color: transparent;
-  border: none;
-  color: white;
-  font-size: 14px;
-  outline: none;
-  flex: 1;
+    .HeaderNav .navigation-mobile {
+        display: none;
+    }
 }

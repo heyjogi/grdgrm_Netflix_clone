@@ -7,21 +7,21 @@ import SearchPage from "./pages/SearchPage";
 import "./App.css";
 
 export default function App() {
-  return (
-    <div className="App">
-      <Header />
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <>
-              <Home />
-              <Footer />
-            </>
-          }
-        />
-        <Route path="/search" element={<SearchPage />} />
-      </Routes>
-    </div>
-  );
+    return (
+        <div className="App">
+            <Header />
+            <Routes>
+                <Route
+                    path="/"
+                    element={
+                        <>
+                            <Home />
+                            <Footer />
+                        </>
+                    }
+                />
+                <Route path="/search" element={<SearchPage />} />
+            </Routes>
+        </div>
+    );
 }
