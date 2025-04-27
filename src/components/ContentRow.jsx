@@ -11,10 +11,8 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 
-export default function ContentRow({ title, id, fetchUrl, isLargeRow }) {
+export default function ContentRow({ title, fetchUrl, isLargeRow }) {
   const [movies, setMovies] = useState([]);
-  const [modalOpen, setModalOpen] = useState(false);
-  const [movieSelected, setMovieSelection] = useState({});
   const [hoveredMovie, setHoveredMovie] = useState(null);
   const [hoveredPosition, setHoveredPosition] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);

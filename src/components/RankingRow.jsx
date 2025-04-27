@@ -1,84 +1,112 @@
 import "../styles/RankingRow.css";
-import noImage from '../assets/no-image.svg';
-import requests from "../api/requests.jsx"
+import React, { useEffect, useState } from "react";
+import axios from "../api/axios";
+import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { IMAGE_BASE_URL } from "../api/config";
 
-export default function RankingRow({ contents }) {
-    const movies = Array(10).fill({}); //10개 짜리 빈 영화 데이터
-    return (
-       <div className="ranking-row">
-        <div className="ranking-title">
-            <h2>top10</h2>
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/scrollbar";
 
-            <ul className="ranking-indicator">
-                {movies.slice(0, 2).map((_, i) => (
-                    <li key={i} className="dot"></li>
-                ))}
-            </ul>
-        </div>
+export default function RankingRow({ title, fetchUrl }) {
+  const [movies, setMovies] = useState([]);
 
-            <div className="ranking-slider">
-                <button className="slide-btn-left">
-                    <svg xmlns="http://www.w3.org/2000/svg" 
-                        width="24" height="24" viewBox="0 0 24 24" 
-                        fill="none">
-                        <path
-                            d="M15 6L9 12L15 18" 
-                            stroke="currentColor" strokeWidth="3" 
-                            strokeLinecap="round" strokeLinejoin="round" 
-                        />
-                    </svg>
-                </button>
-                <button className="slide-btn-right">
-                    <svg xmlns="http://www.w3.org/2000/svg" 
-                        width="24" height="24" viewBox="0 0 24 24" 
-                        fill="none">
-                        <path
-                            d="M9 6L15 12L9 18" 
-                            stroke="currentColor" strokeWidth="3" 
-                            strokeLinecap="round" strokeLinejoin="round"
-                        />
-                    </svg>
-                </button>
+  useEffect(() => {
+    async function fetchData() {
+      const request = await axios.get(fetchUrl);
+      setMovies(request.data.results.slice(0, 10));
+    }
+    fetchData();
+  }, [fetchUrl]);
 
-                <div className="ranking-slider-track">
-                    {movies.map((movie, index) => (
-                        <div key={index} className="ranking-poster">
-                            <svg id={`rank-${index + 1}`} 
-                                width="100%" height="100%"
-                                viewBox={contents[index]?.viewBox}
-                                className={`ranking-icon svg-icon-rank-${index + 1}`}>
-
-                                <path stroke="#595959" strokeWidth="4" d={contents[index]?.path}></path>
-                            </svg>
-                            <img 
-                                key = {index}
-                                className = "ranking-item"
-                                src={noImage}
-                                // {movie.poster_path 
-                                // ? `https://image.tmdb.org/t/p/original/${movie.poster_path}` : noImage}
-                                alt="임시 포스터"
-                            />
-                        </div>
-                    ))}
-                    {/* {contents.map((item, index) => (
-                        <div key={index} className={`ranking-item ranking-item-${index + 1}`}>
-                            <svg id={`rank-${index + 1}`} 
-                                width="100%" height="100%"
-                                viewBox={item.viewBox}
-                                className={`ranking-icon svg-icon-rank-${index + 1}`}>
-
-                                <path stroke="#595959" strokeWidth="4" d={item.path}></path>
-                            </svg>
-                            <img
-                                src={item.thumbnail || noImage}
-                                alt={item.name || "기본 포스터"}
-                            />
-                        </div>
-                    ))} */}
-                </div>
+  return (
+    <div className="ranking-row">
+      <div className="ranking-title">
+        <section className="row">
+          <h2>{title}</h2>
+          <Swiper
+            modules={[Navigation, Pagination, Scrollbar, A11y]}
+            navigation={{
+              prevEl: ".row-slider-container .slide-btn-left",
+              nextEl: ".row-slider-container .slide-btn-right",
+            }}
+            pagination={{ clickable: true }}
+            loop={false}
+            slidesPerView="auto"
+            spaceBetween={30}
+            slidesPerGroup={1}
+            breakpoints={{
+              320: {
+                slidesPerView: 2,
+                spaceBetween: 10,
+              },
+              480: {
+                slidesPerView: 3,
+                spaceBetween: 15,
+              },
+              768: {
+                slidesPerView: 4,
+                spaceBetween: 20,
+              },
+              1024: {
+                slidesPerView: 5,
+                spaceBetween: 30,
+              },
+            }}
+          >
+            <div className="row-slider-container">
+              <button className="slide-btn-left">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                >
+                  <path
+                    d="M15 6L9 12L15 18"
+                    stroke="currentColor"
+                    strokeWidth="3"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </button>
+              <button className="slide-btn-right">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                >
+                  <path
+                    d="M9 6L15 12L9 18"
+                    stroke="currentColor"
+                    strokeWidth="3"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </button>
             </div>
-        </div>
-    );    
+            {movies.map((movie, index) => (
+              <SwiperSlide key={movie.id}>
+                <div className="ranking-item">
+                  <div className="ranking-number">{index + 1}</div>
+                  <img
+                    src={`${IMAGE_BASE_URL}${movie.poster_path}`}
+                    alt={movie.title}
+                    className="ranking-poster"
+                  />
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </section>
+      </div>
+    </div>
+  );
 }
-
-    
