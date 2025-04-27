@@ -1,133 +1,147 @@
 .ranking-row {
-    margin: 40px 0;
-    padding: 0 60px;
-    position: relative;
-    
-}
-
-.ranking-row h2 {
-    color: #fff;
-    font-size: 24px;
-    font-weight: 700;
-    margin-bottom: 20px;
+  margin-left: 20px;
+  color: white;
 }
 
 .ranking-title {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
 }
 
-.ranking-slider {
-    display: flex;
-    align-items: center;
-
-    justify-content: flex-start;
-
-    position: relative;
-    overflow: hidden;
-    height: 163px;
-    width: auto;
+.ranking-title h2 {
+  color: white;
+  padding-left: 20px;
 }
 
-.ranking-slider-track {
-    display: flex;
-    gap: 20px;
-    transition: transform 0.3s ease;
-    overflow: hidden;
-    height: 163px;
-    width: auto;
-  }
+.row {
+  position: relative;
+}
 
 .slide-btn-left,
 .slide-btn-right {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 40px;
-    height: 100px;
-    background-color: rgba(20, 20, 20, 0.265);
-    border: none;
-    z-index: 2;
-    display: block;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    color: #fff;
+  background-clip: content-box;
+  padding: 20px 0;
+  box-sizing: border-box;
+  transition: 400ms all ease-in-out;
+  cursor: pointer;
+  width: 80px;
+  top: 0%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  z-index: 1000;
+  visibility: hidden;
+  background: none;
+  border: none;
+}
+
+.slide-btn-left {
+  left: 0;
+}
+
+.slide-btn-right {
+  right: 0;
+}
+
+.row:hover .slide-btn-left,
+.row:hover .slide-btn-right {
+  visibility: visible;
+  background: rgba(20, 20, 20, 0.5);
 }
 
 .slide-btn-left svg,
 .slide-btn-right svg {
-  width: 24px;
-  height: 24px;
-  stroke: #fff;
+  transition: 400ms all ease-in-out;
+  stroke: white;
 }
 
-.slide-btn-left {
-    left: 0;
+.slide-btn-left:hover svg,
+.slide-btn-right:hover svg {
+  transform: scale(1.5);
 }
 
-.slide-btn-right {
-    right: 0;
+.swiper-container {
+  padding-left: 0; /* Adjusted padding */
+  padding-right: 0; /* Adjusted padding */
 }
 
-.ranking-indicator {
-    display: flex;
-    justify-content: flex-end;
-    gap: 2px;
-    margin-top: 10px;
-    padding: 0;
-    list-style: none;
+.swiper-slide {
+  width: auto !important; /* Ensure each slide takes necessary width */
 }
 
-.dot {
-    width: 13px;
-    height: 2px;
-    background-color: rgba(255, 255, 255, 0.4);
-    border-radius: 2px;
+.ranking-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+  width: 100%;
+}
+
+.ranking-number {
+  font-size: 100px;
+  font-weight: bold;
+  color: black;
+  -webkit-text-stroke: 2px gray;
+  flex-shrink: 0;
+  z-index: 0;
 }
 
 .ranking-poster {
-    position: relative;
-    width: 232px;  
-    height: 162px; 
-    flex-shrink: 0;
+  width: 100%;
+  height: 480px !important;
+  aspect-ratio: 3 /4;
+  object-fit: cover;
+  border-radius: 4px;
+  z-index: 10;
+  margin-left: -15px;
+  transition: transform 450ms;
+}
+
+.ranking-poster:hover {
+  transform: scale(1.08);
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  color: white !important;
+}
+
+.swiper-container:hover .swiper-button-prev,
+.swiper-container:hover .swiper-button-next {
+  opacity: 1;
+}
+
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  font-size: 1.3rem !important;
+  font-weight: 600 !important;
+}
+
+.swiper-pagination {
+  text-align: right !important;
+}
+
+.swiper-pagination-bullet {
+  background: gray !important;
+  opacity: 1 !important;
+}
+
+.swiper-pagination-bullet-active {
+  background: white !important;
+}
+
+@media screen and (min-width: 1200px) and (max-width: 1399px) {
+  .ranking-poster {
+    max-height: 240px;
   }
-
-.ranking-item {
-    width: 114px;
-    height: 162px;
-    object-fit: cover;
-    border-radius: 0px 2px 2px 0px;
-    position: absolute;
-    top: 0;
-    left: 110px; 
-    z-index: 1;
 }
 
-
-/* .ranking-item img {
-    width: 114px;
-    height: 162px;
-    bottom: 0;
-    left: 110px;
-    -o-object-fit: cover;
-    object-fit: cover;
-    position: absolute;
-    right: 0;
-    top: 0;
-    border-radius: 0px 2px 2px 0px;
-} */
-
-
-.ranking-icon {
-    bottom: 0;
-    left: 0px;
-    position: absolute;
-    right: auto;
-    top: 0;
-    width: 50%;
-    height: 162px;
-    z-index: -1;
+@media screen and (max-width: 768px) {
+  .ranking-poster {
+    max-height: 180px;
+  }
 }
-

@@ -1,50 +1,112 @@
 import "../styles/RankingRow.css";
 import React, { useEffect, useState } from "react";
 import axios from "../api/axios";
+import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
 import { IMAGE_BASE_URL } from "../api/config";
 
-export default function RankingRow({ fetchUrl }) {
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/scrollbar";
+
+export default function RankingRow({ title, fetchUrl }) {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
       const request = await axios.get(fetchUrl);
-      console.log("TMDB 응답:", request);
       setMovies(request.data.results.slice(0, 10));
     }
     fetchData();
-  }, []);
+  }, [fetchUrl]);
 
   return (
     <div className="ranking-row">
-      <h2>Top 10</h2>
-      <Swiper slidesPerView={5} spaceBetween={10}>
-        {movies.map((movie, index) => (
-          <SwiperSlide key={movie.id}>
-            <div className="ranking-item" style={{ position: "relative" }}>
-              <span
-                style={{
-                  position: "absolute",
-                  top: "10px",
-                  left: "10px",
-                  fontSize: "5rem",
-                  color: "white",
-                  zIndex: 1,
-                }}
-              >
-                {index + 1}
-              </span>
-              <img
-                src={`${IMAGE_BASE_URL}${movie.poster_path}`}
-                alt={movie.title}
-                style={{ width: "100%", borderRadius: "10px" }}
-              />
+      <div className="ranking-title">
+        <section className="row">
+          <h2>{title}</h2>
+          <Swiper
+            modules={[Navigation, Pagination, Scrollbar, A11y]}
+            navigation={{
+              prevEl: ".row-slider-container .slide-btn-left",
+              nextEl: ".row-slider-container .slide-btn-right",
+            }}
+            pagination={{ clickable: true }}
+            loop={false}
+            slidesPerView="auto"
+            spaceBetween={30}
+            slidesPerGroup={1}
+            breakpoints={{
+              320: {
+                slidesPerView: 2,
+                spaceBetween: 10,
+              },
+              480: {
+                slidesPerView: 3,
+                spaceBetween: 15,
+              },
+              768: {
+                slidesPerView: 4,
+                spaceBetween: 20,
+              },
+              1024: {
+                slidesPerView: 5,
+                spaceBetween: 30,
+              },
+            }}
+          >
+            <div className="row-slider-container">
+              <button className="slide-btn-left">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                >
+                  <path
+                    d="M15 6L9 12L15 18"
+                    stroke="currentColor"
+                    strokeWidth="3"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </button>
+              <button className="slide-btn-right">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                >
+                  <path
+                    d="M9 6L15 12L9 18"
+                    stroke="currentColor"
+                    strokeWidth="3"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </button>
             </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
+            {movies.map((movie, index) => (
+              <SwiperSlide key={movie.id}>
+                <div className="ranking-item">
+                  <div className="ranking-number">{index + 1}</div>
+                  <img
+                    src={`${IMAGE_BASE_URL}${movie.poster_path}`}
+                    alt={movie.title}
+                    className="ranking-poster"
+                  />
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </section>
+      </div>
     </div>
   );
 }
