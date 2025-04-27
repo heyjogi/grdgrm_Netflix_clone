@@ -275,8 +275,8 @@
     gap: 20px;
 }
 
-@media screen and (min-width: 1024px) {
-    .HeaderNav .navigation-desktop {
+@media screen and (min-width: 884px) {
+    .HeaderNav .navigation-desktop  {
         display: flex;
         gap: 20px;
     }
@@ -284,4 +284,39 @@
     .HeaderNav .navigation-mobile {
         display: none;
     }
+}
+
+@media screen and (max-width: 400px) {
+
+    .HeaderNav {
+        display: flex;
+        align-items: center;
+        padding: 0px 15px 0px 20px;
+        height: 41px;
+    }
+    
+    .primary-navigation {
+        gap: 1px;
+    }
+
+    .netflix-logo-btn {
+        width: 48px !important;
+        height: 13px !important;
+    }
+
+    .navigation-mobile {
+        gap: 5px;
+    }
+
+    .nav-tab {
+        font-size: 10px;
+    }
+    
+    .secondary-navigation {
+        gap: 10px;
+    }
+
+    .search-wrapper {
+        display: none;
+    }   
 }

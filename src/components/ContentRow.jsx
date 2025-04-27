@@ -76,21 +76,29 @@ export default function ContentRow({ title, fetchUrl, isLargeRow }) {
             pagination={{ clickable: true }}
             loop={true}
             breakpoints={{
-              1378: {
+              1400: {
+                slidesPerView: 6,
+                slidesPerGroup: 6,
+              },
+              1100: {
                 slidesPerView: 5,
                 slidesPerGroup: 5,
               },
-              998: {
-                slidesPerView: 5,
-                slidesPerGroup: 5,
-              },
-              625: {
+              800: {
                 slidesPerView: 4,
                 slidesPerGroup: 4,
               },
-              0: {
+              500: {
                 slidesPerView: 3,
                 slidesPerGroup: 3,
+              },
+              400: {
+                slidesPerView: 2,
+                slidesPerGroup: 2,
+              },
+              0: {
+                slidesPerView: 2,
+                slidesPerGroup: 2,
               },
             }}
           >
