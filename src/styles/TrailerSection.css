@@ -1,7 +1,7 @@
 .trailer {
     position: relative;
     width: 100%;
-    height: 100vh; /* 또는 100vh */
+    height: 100vh;
     overflow: hidden;
     background-color: black;
 }
@@ -99,40 +99,6 @@
     align-items: center;
 }
 
-.trailer-controls {
-    display: flex;
-    align-items: center;
-    position: relative;
-    gap: 30px;
-}
-
-.trailer-controls-btns {
-    display: flex;
-    position: absolute;
-    gap: 12px;
-    right: 4rem;
-    align-items: center;
-}
-
-.trailer-controls-btns button {
-    width: 40px;
-    height: 40px;
-    border: 0.8px solid white;
-    border-radius: 50%;
-    background-color: transparent;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-.trailer-controls-btns svg {
-    width: 22px;
-    height: auto;
-}
-
 .age-badge {
     background-color: rgba(51, 51, 51, 0.6);
     border-left: 2px solid white;
@@ -140,11 +106,6 @@
     min-width: 78px;
     font-size: 18px;
     font-weight: bold;
-}
-
-.age-badge svg {
-    display: block;
-    right: 30px;
 }
 
 .billboard-title {
