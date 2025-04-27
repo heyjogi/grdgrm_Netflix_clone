@@ -1,50 +1,84 @@
 .trailer {
     position: relative;
-    height: 550px;
+    width: 100%;
+    height: 100vh;
     overflow: hidden;
-    color: #fff;
-    justify-content: space-between;
+    background-color: black;
 }
 
 .trailer-video {
     position: absolute;
-    color: white;
-    object-fit: contain;
-    height: 448px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    pointer-events: none;
 }
 
 .trailer-wrapper {
-    position: relative;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     z-index: 1;
     display: flex;
-    align-items: flex-end;
     justify-content: space-between;
-    height: 100%;
-    padding: 0 60px 40px;
+    align-items: flex-end;
+    padding: 60px 0 120px 60px;
     box-sizing: border-box;
     color: white;
 }
 
 .trailer-left {
     display: flex;
-    bottom: 20px;
     flex-direction: column;
-    gap: 15px;
-    max-width: 600px;
+    gap: 20px;
+    max-width: 40%;
+    justify-content: center;
 }
-  
+
+.trailer-title {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
 .trailer-actions-btns {
     display: flex;
-    gap: 10px;
+    gap: 16px;
+    margin-top: 0;
 }
-  
+
+.trailer-right {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+}
+
+.mute-btn {
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 1px solid white;
+    color: white;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+}
+
 .play-btn {
     background-color: white;
     color: black;
     width: 125px;
     height: 45px;
 }
-  
+
 .info-btn {
     background-color: rgba(109, 109, 110, 0.7);
     color: white;
@@ -52,7 +86,8 @@
     height: 45px;
 }
 
-.play-btn, .info-btn {
+.play-btn,
+.info-btn {
     display: flex;
     padding: 10px 16px;
     font-size: 18px;
@@ -64,61 +99,44 @@
     align-items: center;
 }
 
-.trailer-controls {
-    display: flex;
-    align-items: center;
-    position: relative;
-    gap: 30px;
-}
-
-.trailer-controls-btns {
-    display: flex;
-    position: absolute;
-    gap: 12px;
-    right: 4rem;
-    align-items: center;
-}
-
-.trailer-controls-btns button {
-    width: 40px;
-    height: 40px;
-    border: 0.8px solid white;
-    border-radius: 50%;
-    background-color: transparent;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0; 
-    box-sizing: border-box;
-  }
-
-.trailer-controls-btns svg {
-    width: 22px;
-    height: auto;
-}
-
-
 .age-badge {
-    position: absolute; 
-    right: -58px;
-
-    display: flex;          
-    align-items: center;    
-    
-
     background-color: rgba(51, 51, 51, 0.6);
-    width: 35px;
-    height: 20px;
-    padding: 8px 30px;
     border-left: 2px solid white;
-
-    text-align: left;
-    font-size: 12px;
-    color: white;
+    padding: 12px 36px 12px 12px;
+    min-width: 78px;
+    font-size: 18px;
+    font-weight: bold;
 }
 
-.age-badge svg {
+.billboard-title {
+    width: 600px;
+    max-width: 90vw;
+    margin-bottom: 24px;
+    transition: width 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+        margin-bottom 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.title-logo {
+    width: 100%;
+    height: auto;
     display: block;
-    right: 30px;
+}
+.trailer-description {
+    color: #fff;
+    font-size: 1.2rem;
+    margin-bottom: 32px;
+    width: 100%;
+    max-width: 600px;
+    box-sizing: border-box;
+}
+
+.trailer-left.shrink {
+    gap: 12px;
+}
+.trailer-left.shrink .billboard-title {
+    width: 320px;
+    margin-bottom: 8px;
+    transform: none;
+}
+.trailer-left.shrink .trailer-description {
+    display: none;
 }
