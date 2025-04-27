@@ -43,8 +43,12 @@ export default function Modal({ movie, position, onMouseEnter, onMouseLeave }) {
     }
   };
 
-  const handleMouseLeaveInternal = () => {
+  const handleMouseLeaveInternal = (e) => {
     if (!isDetailOpen) {
+      const relatedTarget = e.relatedTarget;
+      if (relatedTarget && relatedTarget.closest(".modal-buttons-right")) {
+        return;
+      }
       onMouseLeave();
     }
   };

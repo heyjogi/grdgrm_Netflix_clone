@@ -1,10 +1,10 @@
 import "../styles/RankingRow.css";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import axios from "../api/axios";
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { IMAGE_BASE_URL } from "../api/config";
-
+import Modal from "./Modal";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -12,6 +12,12 @@ import "swiper/css/scrollbar";
 
 export default function RankingRow({ title, fetchUrl }) {
   const [movies, setMovies] = useState([]);
+
+  const [hoveredMovie, setHoveredMovie] = useState(null);
+  const [hoveredPosition, setHoveredPosition] = useState({ x: 0, y: 0 });
+  const [isHovering, setIsHovering] = useState(false);
+  const containerRef = useRef(null);
+  const hoverTimeoutRef = useRef(null);
 
   useEffect(() => {
     async function fetchData() {
@@ -21,8 +27,42 @@ export default function RankingRow({ title, fetchUrl }) {
     fetchData();
   }, [fetchUrl]);
 
+  const handleMouseEnter = (e, movie) => {
+    clearTimeout(hoverTimeoutRef.current);
+
+    const containerRect = containerRef.current.getBoundingClientRect();
+    const cardRect = e.currentTarget.getBoundingClientRect();
+    const newPosition = {
+      x: cardRect.left + cardRect.width / 2 - containerRect.left,
+      y: cardRect.top - containerRect.top - 120,
+    };
+
+    setIsHovering(false);
+    setHoveredMovie(null);
+
+    hoverTimeoutRef.current = setTimeout(() => {
+      setHoveredPosition(newPosition);
+      setHoveredMovie(movie);
+      setIsHovering(true);
+    }, 120);
+  };
+
+  const handleMouseLeave = () => {
+    clearTimeout(hoverTimeoutRef.current);
+    setIsHovering(false);
+  };
+
+  useEffect(() => {
+    if (!isHovering) {
+      const timeout = setTimeout(() => {
+        setHoveredMovie(null);
+      }, 200);
+      return () => clearTimeout(timeout);
+    }
+  }, [isHovering]);
+
   return (
-    <div className="ranking-row">
+    <div className="ranking-row" ref={containerRef}>
       <div className="ranking-title">
         <section className="row">
           <h2>{title}</h2>
@@ -94,7 +134,11 @@ export default function RankingRow({ title, fetchUrl }) {
             </div>
             {movies.map((movie, index) => (
               <SwiperSlide key={movie.id}>
-                <div className="ranking-item">
+                <div
+                  className="ranking-item"
+                  onMouseEnter={(e) => handleMouseEnter(e, movie)}
+                  onMouseLeave={handleMouseLeave}
+                >
                   <div className="ranking-number">{index + 1}</div>
                   <img
                     src={`${IMAGE_BASE_URL}${movie.poster_path}`}
@@ -105,6 +149,14 @@ export default function RankingRow({ title, fetchUrl }) {
               </SwiperSlide>
             ))}
           </Swiper>
+          {hoveredMovie && (
+            <Modal
+              movie={hoveredMovie}
+              position={hoveredPosition}
+              onMouseEnter={() => setIsHovering(true)}
+              onMouseLeave={() => setIsHovering(false)}
+            />
+          )}
         </section>
       </div>
     </div>
