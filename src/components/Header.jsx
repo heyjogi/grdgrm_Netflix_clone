@@ -6,9 +6,18 @@ export default function Header() {
     const [isSearchOpen, setIsSearchOpen] = useState(false);
     const [searchQuery, setSearchQuery] = useState("");
     const [isScrolled, setIsScrolled] = useState(false);
+    const [profileImage, setProfileImage] = useState("");
 
     const searchContainerRef = useRef(null);
     const navigate = useNavigate();
+
+    //프로필 이미지 불러오기
+    useEffect(() => {
+        const savedImage = localStorage.getItem("profileImage");
+        if (savedImage) {
+            setProfileImage(savedImage);
+        }
+    }, []);
 
     // 검색창 토글
     const toggleSearch = () => {
@@ -159,7 +168,7 @@ export default function Header() {
                     <div className="profile-trigger">
                         <img
                             className="profile-icon"
-                            src="https://occ-0-8232-988.1.nflxso.net/dnm/api/v6/vN7bi_My87NPKvsBoib006Llxzg/AAAABTZ2zlLdBVC05fsd2YQAR43J6vB1NAUBOOrxt7oaFATxMhtdzlNZ846H3D8TZzooe2-FT853YVYs8p001KVFYopWi4D4NXM.png?r=229"
+                            src={profileImage || "https://occ-0-8232-988.1.nflxso.net/dnm/api/v6/vN7bi_My87NPKvsBoib006Llxzg/AAAABTZ2zlLdBVC05fsd2YQAR43J6vB1NAUBOOrxt7oaFATxMhtdzlNZ846H3D8TZzooe2-FT853YVYs8p001KVFYopWi4D4NXM.png?r=229"}
                             alt="Netflix Profile Icon"
                         />
                         <span className="triangle-icon"></span>

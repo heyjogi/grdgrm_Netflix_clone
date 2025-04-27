@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback, useRef } from "react";
 import { useLocation } from "react-router-dom";
-import axious from "../../api/axious";
+import axios from "../../api/axios";
 import "./SearchPage.css";
 
 export default function SearchPage() {
@@ -20,21 +20,21 @@ export default function SearchPage() {
       let results = [];
 
       if (searchTerm) {
-        const searchRes = await axious.get(
+        const searchRes = await axios.get(
           `/search/multi?include_adult=false&query=${searchTerm}&page=${page}`
         );
         results = searchRes.data.results;
 
         // 검색 결과가 너무 적으면 인기 콘텐츠 추가
         if (results.length < 10) {
-          const extraRes = await axious.get(
+          const extraRes = await axios.get(
             `/discover/movie?sort_by=popularity.desc&page=${page}`
           );
           results = [...results, ...extraRes.data.results];
         }
       } else {
         // 검색어 없을 경우 기본 콘텐츠
-        const discoverRes = await axious.get(
+        const discoverRes = await axios.get(
           `/discover/movie?sort_by=popularity.desc&page=${page}`
         );
         results = discoverRes.data.results;
@@ -73,7 +73,7 @@ export default function SearchPage() {
 
   const fetchTrailer = async (id, type) => {
     try {
-      const res = await axious.get(`/${type}/${id}/videos`);
+      const res = await axios.get(`/${type}/${id}/videos`);
       const trailer = res.data.results.find(
         (vid) => vid.type === "Trailer" && vid.site === "YouTube"
       );

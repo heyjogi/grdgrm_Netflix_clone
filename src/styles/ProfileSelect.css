@@ -1,0 +1,163 @@
+.ProfileSelectPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 100%;
+    display: flex;
+    height: 30px;
+}
+
+.profile-logo-text {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    top: 150px;
+    text-align: center;
+    font-size: 48px;
+    font-weight: 400;
+	margin-bottom: 10px;
+	margin-left: 25px;
+}
+
+.profile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 200px;
+}   
+
+.profile-cards {
+    display: flex; 
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 35px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+button {
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+}
+
+.profile-card, .create-profile-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: none;
+    border: none;
+    color: gray;
+}
+
+.profile-card {
+    width: 120px;
+    height: 120px;
+}
+
+.profile-card-img {
+    width: 120px;
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5%;
+}
+
+.profile-card-img img {
+    width: 100%;
+    height: 100%;
+    border-radius: 5%;
+    object-fit: cover;
+}
+
+.profile-card-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.create-profile-card {
+    width: 120px;
+    height: 120px;
+    margin: -18px 1px;
+    border: solid 1.2px gray;
+    border-radius: 5%;
+}
+
+.create-profile-card-img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.plusIcon {
+    width: 100px;
+    height: 100px;
+    color: gray; 
+    transition: color 0.3s ease;
+}
+
+.create-profile-card .profile-card-img span {
+    font-size: 90px;
+    font-weight: 200;
+    line-height: 100px;
+}
+
+.profile-setting {
+    margin-top: 40px;
+    border: solid 1.2px gray;
+    width: 150px;
+    height: 40px;
+    font-size: 16px;
+    border-radius: 5%;
+    text-align: center;
+    color: gray;
+    background: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.profile-setting span {
+    font-size: 17px;
+    font-weight: 300;
+    line-height: 1;
+}
+
+.create-profile-card:hover .plusIcon {
+    color: white;
+}
+
+.profile-card-img, .create-profile-card {
+    transition: all 0.3s ease;
+}
+
+.create-profile-card:hover {
+    transform: scale(1.05);
+    border: 1.5px solid white;
+}
+
+.profile-card-img:hover, .profile-setting:hover {
+    transform: scale(1.05);
+    border: 1.5px solid white;
+    color: white;
+  }
+
+.profile-card:hover {
+    transform: scale(1.05);
+    color: white;
+  }

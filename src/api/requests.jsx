@@ -21,6 +21,8 @@ const requests = {
   // TV (시리즈/드라마)
   fetchSeriesPopular: `/tv/popular`,
   fetchSeriesTopRated: `/tv/top_rated`,
+  fetchActionMovies: `/discover/movie?with_genres=28`,
+  fetchDramaMovies: `/discover/movie?with_genres=18`,
   fetchAnimeSeries: `/discover/tv?with_genres=16`,
   fetchFantasySeries: `/discover/tv?with_genres=10765`,
   fetchDocumentarySeries: `/discover/tv?with_genres=99`,
