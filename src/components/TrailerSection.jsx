@@ -80,7 +80,7 @@ export default function TrailerSection() {
 
             <div className="trailer-wrapper">
                 <div className={`trailer-left${shrink ? " shrink" : ""}`}>
-                    <div className={`billboard-title ${isEnded ? "ended" : "playing"}`}>
+                    <div className={`billboard-title`}>
                         <img
                             alt="하우스"
                             className="title-logo"

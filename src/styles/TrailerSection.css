@@ -123,11 +123,13 @@
     height: 40px;
 }
 
+
 .billboard-title {
     width: 600px;
     max-width: 90vw;
     margin-bottom: 24px;
     transition: width 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-bottom: 0.7s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .title-logo {
@@ -158,19 +160,6 @@
 .trailer-left.shrink .trailer-description {
     display: none;
 }
-
-.billboard-title.playing {
-    position: relative;
-    top: 10px;
-    transition: top 0.5s ease;
-  }
-  
-  .billboard-title.ended {
-    position: relative;
-    top: 40px; /* 끝났을 때는 내려옴 */
-    transition: top 0.5s ease;
-  }
-
 
 @media screen and (max-width: 768px) {
     .trailer {
