@@ -129,7 +129,7 @@
     max-width: 90vw;
     margin-bottom: 24px;
     transition: width 0.7s cubic-bezier(0.4, 0, 0.2, 1);
-        margin-bottom: 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        margin-bottom 0.7s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .title-logo {
