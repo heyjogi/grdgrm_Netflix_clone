@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import "../styles/Header.css";
 
 export default function Header() {
@@ -76,43 +76,57 @@ export default function Header() {
                     />
                 </a>
 
-            <ul className="navigation-desktop">
-                <li className="nav-tab">
-                    <a href="/" id="current-active">홈</a>
-                </li>
-                <li className="nav-tab">
-                    <a href="/" id="genreCategory">시리즈</a>
-                </li>
-                <li className="nav-tab">
-                <a href="/" id="genreCategory">영화</a>
-                </li>
-            </ul>
-
-            <div className="navigation-mobile"
-                onMouseEnter={() => setIsDropdownOpen(true)}
-                onMouseLeave={() => setIsDropdownOpen(false)}
-            >
-                <button 
-                    className="nav-tab" 
-                    id="nav-menu"
-                    >
-                        메뉴
-                </button>
-                <ul className={`dropdown-menu ${isDropdownOpen ? "open" : ""}`}>
-                    <li className="nav-tab1">
-                        <a href="/" id="current-active">홈</a>
+                <ul className="navigation-desktop">
+                    <li className="nav-tab">
+                        <Link to="/" id="current-active">
+                            홈
+                        </Link>
                     </li>
-                    <li className="nav-tab1">
-                        <a href="/" id="genreCategory">시리즈</a>
+                    <li className="nav-tab">
+                        <Link to="/series" id="genreCategory">
+                            시리즈
+                        </Link>
                     </li>
-                    <li className="nav-tab1">
-                    <a href="/" id="genreCategory">영화</a>
+                    <li className="nav-tab">
+                        <Link to="/movies" id="genreCategory">
+                            영화
+                        </Link>
                     </li>
                 </ul>
+
+                <div
+                    className="navigation-mobile"
+                    onMouseEnter={() => setIsDropdownOpen(true)}
+                    onMouseLeave={() => setIsDropdownOpen(false)}
+                >
+                    <button className="nav-tab" id="nav-menu">
+                        메뉴
+                    </button>
+                    <ul
+                        className={`dropdown-menu ${
+                            isDropdownOpen ? "open" : ""
+                        }`}
+                    >
+                        <li className="nav-tab1">
+                            <Link to="/" id="current-active">
+                                홈
+                            </Link>
+                        </li>
+                        <li className="nav-tab1">
+                            <Link to="/series" id="genreCategory">
+                                시리즈
+                            </Link>
+                        </li>
+                        <li className="nav-tab1">
+                            <Link to="/movies" id="genreCategory">
+                                영화
+                            </Link>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    
-        <div className="secondary-navigation">
+
+            <div className="secondary-navigation">
                 <div
                     className="nav-element header-search-container"
                     ref={searchContainerRef}
@@ -177,7 +191,10 @@ export default function Header() {
                     <div className="profile-trigger">
                         <img
                             className="profile-icon"
-                            src={profileImage || "https://occ-0-8232-988.1.nflxso.net/dnm/api/v6/vN7bi_My87NPKvsBoib006Llxzg/AAAABTZ2zlLdBVC05fsd2YQAR43J6vB1NAUBOOrxt7oaFATxMhtdzlNZ846H3D8TZzooe2-FT853YVYs8p001KVFYopWi4D4NXM.png?r=229"}
+                            src={
+                                profileImage ||
+                                "https://occ-0-8232-988.1.nflxso.net/dnm/api/v6/vN7bi_My87NPKvsBoib006Llxzg/AAAABTZ2zlLdBVC05fsd2YQAR43J6vB1NAUBOOrxt7oaFATxMhtdzlNZ846H3D8TZzooe2-FT853YVYs8p001KVFYopWi4D4NXM.png?r=229"
+                            }
                             alt="Netflix Profile Icon"
                         />
                         <span className="triangle-icon"></span>
