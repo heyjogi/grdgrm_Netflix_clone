@@ -155,7 +155,7 @@
 .trailer-left.shrink .billboard-title {
     width: 320px;
     margin-bottom: 8px;
-    transform: translateY(-20px);
+    transform: none;
 }
 .trailer-left.shrink .trailer-description {
     display: none;
