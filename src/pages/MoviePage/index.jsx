@@ -1,39 +1,33 @@
-import React, { useEffect, useState } from "react";
-import axios from "../../api/axios";
-import "./MoviePage.css";
-import Header from "../../components/Header";
-import Footer from "../../components/Footer";
+import React from "react";
+import requests from "../../api/requests";
+import TrailerSection from "../../components/TrailerSection";
 import ContentRow from "../../components/ContentRow";
+import RankingRow from "../../components/RankingRow";
 
 const MoviesPage = () => {
-  const [movieList, setMovieList] = useState([]);
-
-  useEffect(() => {
-    const fetchMovies = async () => {
-      try {
-        // 예시: 영화 목록 불러오기 (TMDB API 또는 자체 API)
-        const res = await axios.get("/api/movies");
-        setMovieList(res.data.results);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    fetchMovies();
-  }, []);
-
   return (
-    <div className="movies-page">
-      <Header />
-      <div className="movies-container">
-        <h1 className="page-title">영화</h1>
-        <div className="movies-grid">
-          {movieList.map((movie) => (
-            <ContentRow key={movie.id} content={movie} />
-          ))}
-        </div>
-      </div>
-      <Footer />
+    <div className="App">
+      <main>
+        <TrailerSection />
+        <section className="content-section">
+          <ContentRow
+            title="꼭 챙겨보세요! 회원님을 위한 콘텐츠"
+            fetchUrl={requests.fetchMoviePopular}
+          />
+          <RankingRow
+            title="오늘 대한민국의 TOP 10 영화"
+            fetchUrl={requests.fetchMovieTopRated}
+          />
+          <ContentRow
+            title="범죄 & 스릴러 영화"
+            fetchUrl={requests.fetchCrimeMovies}
+          />
+          <ContentRow
+            title="헤드라인 뒤에 가려진 이야기들"
+            fetchUrl={requests.fetchDocumentaryMovies}
+          />
+        </section>
+      </main>
     </div>
   );
 };

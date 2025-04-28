@@ -15,7 +15,7 @@ const SeriesPage = () => {
             fetchUrl={requests.fetchSeriesPopular}
           />
           <RankingRow
-            title="오늘 대한민국의 TOP 10"
+            title="오늘 대한민국의 TOP 10 시리즈"
             fetchUrl={requests.fetchSeriesTopRated}
           />
           <ContentRow
