@@ -143,7 +143,7 @@ export default function SearchPage() {
     ) : (
       <section className="no-results">
         <div className="no-results__text">
-          <p>찾고자하는 검색어 "{searchTerm}"에 맞는 컨텐츠가 없습니다.</p>
+          <p></p>
         </div>
       </section>
     );

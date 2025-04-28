@@ -1,51 +1,52 @@
 .search-container {
-    background-color: #141414;
-    padding: 0px 60px;
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    column-gap: 8px; /* 좌우 간격 유지 */
-    row-gap: 65px; /* 위아래 간격만 넓힘 */
+  background-color: #141414;
+  padding: 0px 60px;
+  padding-top: 230px;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  column-gap: 8px; /* 좌우 간격 유지 */
+  row-gap: 65px; /* 위아래 간격만 넓힘 */
 }
 
 .movie {
-    position: relative;
+  position: relative;
 }
 
 .movie__column-poster {
-    position: relative;
-    aspect-ratio: 16/9;
-    overflow: hidden;
-    border-radius: 4px;
+  position: relative;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  border-radius: 4px;
 }
 
 .movie__post {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s ease;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
 }
 
 .movie__column-poster:hover .movie__post {
-    transform: scale(1.05);
+  transform: scale(1.05);
 }
 
 .no-results {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    padding: 40px;
-    width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  padding: 40px;
+  width: 100%;
 }
 
 .no-results__text {
-    color: #fff;
-    font-size: 16px;
+  color: #fff;
+  font-size: 16px;
 }
 
 .movie__column-poster iframe {
-    width: 100%;
-    height: 100%;
-    border-radius: 4px;
-    object-fit: cover;
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+  object-fit: cover;
 }
