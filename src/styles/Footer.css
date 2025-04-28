@@ -40,7 +40,7 @@
 .footer-link-grid {
     display: flex;
     justify-content: flex-start;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     gap: 24px 60px;
     margin-top: 0px;
     width: 100%;
@@ -127,9 +127,10 @@
 
 @media (max-width: 768px) {
     .footer-link-grid {
-        flex-direction: column;
         gap: 24px 0;
         align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 24px 20px;
     }
     .footer-container {
         padding: 0 4vw;
@@ -150,5 +151,9 @@
     .copy-text-block {
         padding: 0;
         text-align: left;
+    }
+    .member-footer-links {
+        flex: 1 1 45%;
+        min-width: 150px;
     }
 }
