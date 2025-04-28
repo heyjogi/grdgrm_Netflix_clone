@@ -7,6 +7,7 @@ export default function Header() {
     const [searchQuery, setSearchQuery] = useState("");
     const [isScrolled, setIsScrolled] = useState(false);
     const [profileImage, setProfileImage] = useState("");
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
     const searchContainerRef = useRef(null);
     const navigate = useNavigate();
@@ -87,16 +88,24 @@ export default function Header() {
                 </li>
             </ul>
 
-            <div className='navigation-mobile'>
-                <button className="nav-tab" id="nav-menu">메뉴</button>
-                <ul className="dropdown-menu">
-                    <li className="nav-tab">
+            <div className="navigation-mobile"
+                onMouseEnter={() => setIsDropdownOpen(true)}
+                onMouseLeave={() => setIsDropdownOpen(false)}
+            >
+                <button 
+                    className="nav-tab" 
+                    id="nav-menu"
+                    >
+                        메뉴
+                </button>
+                <ul className={`dropdown-menu ${isDropdownOpen ? "open" : ""}`}>
+                    <li className="nav-tab1">
                         <a href="/" id="current-active">홈</a>
                     </li>
-                    <li className="nav-tab">
+                    <li className="nav-tab1">
                         <a href="/" id="genreCategory">시리즈</a>
                     </li>
-                    <li className="nav-tab">
+                    <li className="nav-tab1">
                     <a href="/" id="genreCategory">영화</a>
                     </li>
                 </ul>

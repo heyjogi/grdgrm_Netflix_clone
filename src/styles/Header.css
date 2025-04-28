@@ -45,7 +45,7 @@
     color: white;
 }
 
-.nav-tab {
+.nav-tab, .nav-tab1 {
     display: inline-block;
     list-style: none;
     padding: 0;
@@ -273,10 +273,62 @@
 .HeaderNav .navigation-mobile {
     display: flex;
     gap: 20px;
+    position: relative;
 }
 
-@media screen and (min-width: 1024px) {
-    .HeaderNav .navigation-desktop {
+.nav-tab1 {
+    margin: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.nav-tab1:hover {
+    background-color:rgba(20, 20, 20, 0.7);
+}
+
+.dropdown-menu {
+    display: none;
+    flex-direction: column;
+    background-color: black;
+    opacity: 0.9;
+    position: relative;
+
+    align-items: center;
+
+    top: 90px;
+    left: -38%;
+    width: 120px;
+    height: 105px;
+    padding: 10px 0px;
+    border-top: solid 3px white;
+    
+    z-index: 1000;
+  }
+
+  .dropdown-menu::before {
+    content: "";
+    position: absolute;
+    top: -5%;
+    left: 50%; 
+    border-width: 0 4px 4px 4px;
+    border-style: solid;
+    border-color: transparent transparent white transparent;
+  }
+  
+  .dropdown-menu.open {
+    display: flex;
+  }
+
+  .dropdown-menu a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 16px;
+    display: block;
+    font-size: 13px;
+  }
+
+@media screen and (min-width: 884px) {
+    .HeaderNav .navigation-desktop  {
         display: flex;
         gap: 20px;
     }
@@ -284,4 +336,42 @@
     .HeaderNav .navigation-mobile {
         display: none;
     }
+}
+
+@media screen and (max-width:884px) {
+    .HeaderNav {
+        display: flex;
+        align-items: center;
+        padding: 0px 15px 0px 20px;
+        height: 41px;
+        width: 100%;
+    }
+    
+    .primary-navigation {
+        gap: 1px;
+    }
+
+    .netflix-logo-btn {
+        width: 48px !important;
+        height: 13px !important;
+    }
+
+    .navigation-mobile {
+        gap: 5px;
+    }
+
+    .nav-tab {
+        font-size: 10px;
+    }
+    
+    .secondary-navigation {
+        gap: 10px;
+    }
+
+}
+
+@media screen and (max-width: 400px) {
+    .search-wrapper {
+        display: none;
+    }   
 }
