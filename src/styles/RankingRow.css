@@ -20,8 +20,8 @@
 .row {
   position: relative;
   width: 100%;
-    overflow: hidden;
-    box-sizing: border-box;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 .slide-btn-left,
@@ -139,42 +139,38 @@
   background: white !important;
 }
 
-
 @media screen and (max-width: 1399px) {
-    .swiper-slide {
-      width: calc((100% - 4 * 30px) / 5);
-    }
-    .ranking-number {
-        font-size: 150px;
-     }
-    .ranking-poster {
-      max-height: 240px;
-    }
+  .swiper-slide {
+    width: calc((100% - 4 * 30px) / 5);
   }
-  
+  .ranking-number {
+    font-size: 150px;
+  }
+  .ranking-poster {
+    max-height: 240px;
+  }
+}
 
-  @media screen and (max-width: 1099px) {
-    .swiper-slide {
-      width: calc((100% - 3 * 30px) / 4);
-    }
+@media screen and (max-width: 1099px) {
+  .swiper-slide {
+    width: calc((100% - 3 * 30px) / 4);
   }
-  
+}
 
-  @media screen and (max-width: 799px) {
-    .swiper-slide {
-      width: calc((100% - 2 * 30px) / 3);
-    }
-    .ranking-number {
-      font-size: 100px;
-      }
-    .ranking-poster {
-      max-height: 180px;
-    }
+@media screen and (max-width: 799px) {
+  .swiper-slide {
+    width: calc((100% - 2 * 30px) / 3);
+  }
+  .ranking-number {
+    font-size: 100px;
+  }
+  .ranking-poster {
+    max-height: 180px;
+  }
+}
 
+@media screen and (max-width: 499px) {
+  .swiper-slide {
+    width: calc((100% - 1 * 30px) / 2);
   }
-  
-  @media screen and (max-width: 499px) {
-    .swiper-slide {
-      width: calc((100% - 1 * 30px) / 2);
-    }
-  }
+}

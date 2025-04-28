@@ -12,6 +12,9 @@
 .row {
   position: relative;
 }
+.row-slider-wrapper {
+  position: relative;
+}
 
 .slide-btn-left,
 .slide-btn-right {

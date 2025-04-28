@@ -36,7 +36,7 @@ export default function ContentRow({ title, fetchUrl, isLargeRow }) {
     const cardRect = e.currentTarget.getBoundingClientRect();
     const newPosition = {
       x: cardRect.left + cardRect.width / 2 - containerRect.left,
-      y: cardRect.top - containerRect.top - 120,
+      y: cardRect.top - containerRect.top - 170,
     };
 
     setIsHovering(false);
@@ -65,8 +65,8 @@ export default function ContentRow({ title, fetchUrl, isLargeRow }) {
   return (
     <div className="content-row" ref={containerRef}>
       <div className="content-title">
-        <section className="row">
-          <h2>{title}</h2>
+        <h2>{title}</h2>
+        <div className="row-slider-wrapper">
           <Swiper
             modules={[Navigation, Pagination, Scrollbar, A11y]}
             navigation={{
@@ -169,7 +169,7 @@ export default function ContentRow({ title, fetchUrl, isLargeRow }) {
               onMouseLeave={() => setIsHovering(false)}
             />
           )}
-        </section>
+        </div>
       </div>
     </div>
   );

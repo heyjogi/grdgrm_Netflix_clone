@@ -33,8 +33,8 @@ export default function RankingRow({ title, fetchUrl }) {
     const containerRect = containerRef.current.getBoundingClientRect();
     const cardRect = e.currentTarget.getBoundingClientRect();
     const newPosition = {
-      x: cardRect.left + cardRect.width / 2 - containerRect.left,
-      y: cardRect.top - containerRect.top - 120,
+      x: cardRect.left + cardRect.width / 2 - containerRect.left - 160,
+      y: cardRect.top - containerRect.top - 100,
     };
 
     setIsHovering(false);
@@ -64,8 +64,8 @@ export default function RankingRow({ title, fetchUrl }) {
   return (
     <div className="ranking-row" ref={containerRef}>
       <div className="ranking-title">
-        <section className="row">
-          <h2>{title}</h2>
+        <h2>{title}</h2>
+        <div className="row-slider-wrapper">
           <Swiper
             modules={[Navigation, Pagination, Scrollbar, A11y]}
             navigation={{
@@ -78,31 +78,31 @@ export default function RankingRow({ title, fetchUrl }) {
             spaceBetween={30}
             slidesPerGroup={1}
             breakpoints={{
-                1400: {
-                    slidesPerView: 6,
-                    slidesPerGroup: 6,
-                  },
-                  1100: {
-                    slidesPerView: 5,
-                    slidesPerGroup: 5,
-                  },
-                  800: {
-                    slidesPerView: 4,
-                    slidesPerGroup: 4,
-                  },
-                  500: {
-                    slidesPerView: 3,
-                    slidesPerGroup: 3,
-                  },
-                  400: {
-                    slidesPerView: 2,
-                    slidesPerGroup: 2,
-                  },
-                  0: {
-                    slidesPerView: 2,
-                    slidesPerGroup: 2,
-                  },
-                }}
+              1400: {
+                slidesPerView: 6,
+                slidesPerGroup: 6,
+              },
+              1100: {
+                slidesPerView: 5,
+                slidesPerGroup: 5,
+              },
+              800: {
+                slidesPerView: 4,
+                slidesPerGroup: 4,
+              },
+              500: {
+                slidesPerView: 3,
+                slidesPerGroup: 3,
+              },
+              400: {
+                slidesPerView: 2,
+                slidesPerGroup: 2,
+              },
+              0: {
+                slidesPerView: 2,
+                slidesPerGroup: 2,
+              },
+            }}
           >
             <div className="row-slider-container">
               <button className="slide-btn-left">
@@ -165,7 +165,7 @@ export default function RankingRow({ title, fetchUrl }) {
               onMouseLeave={() => setIsHovering(false)}
             />
           )}
-        </section>
+        </div>
       </div>
     </div>
   );
