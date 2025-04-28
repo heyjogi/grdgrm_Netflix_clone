@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import axios from "../api/axios";
+import axios from "../../api/axios";
 import "./MoviePage.css";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import ContentRow from "../components/ContentRow";
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
+import ContentRow from "../../components/ContentRow";
 
 const MoviesPage = () => {
   const [movieList, setMovieList] = useState([]);
