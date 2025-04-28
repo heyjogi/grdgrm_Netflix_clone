@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import './MoviesPage.css';
-import Header from '../../components/Header';
-import Footer from '../../components/Footer';
-import ContentRow from '../../components/ContentRow';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import "./MoviePage.css";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import ContentRow from "../components/ContentRow";
 
 const MoviesPage = () => {
   const [movieList, setMovieList] = useState([]);
@@ -12,7 +12,7 @@ const MoviesPage = () => {
     const fetchMovies = async () => {
       try {
         // 예시: 영화 목록 불러오기 (TMDB API 또는 자체 API)
-        const res = await axios.get('/api/movies');
+        const res = await axios.get("/api/movies");
         setMovieList(res.data.results);
       } catch (error) {
         console.error(error);
